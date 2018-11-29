@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/29 19:43:12 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 19:55:31 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	*flag_minus(char *str, char c)
 	int		i;
 	int		j;
 	int		space_nb;
+	char	*tmp;
 
 	i = -1;
 	j = 0;
@@ -67,13 +68,19 @@ char	*flag_minus(char *str, char c)
 	while (str[++i] == ' ')
 		space_nb++;
 	printf("space_nb: %d\n", space_nb);
-	while (str[++i])
-		str[j++] = str[i];
+	tmp = str;
+	printf("tmp (minus, before while): %s\n", tmp);
+	while (tmp[i])
+	{
+		str[j++] = tmp[i++];
+		printf("str (minus, in while): %s\n", str);
+	}
 	printf("i: %d\n", i);
-	while (str[i - 1 - space_nb])
+	free(tmp);
+	while (str[i - space_nb])
 	{
 		printf("str (while minus): %s\n", str);
-		str[i - 1 - space_nb--] = ' ';
+		str[i - space_nb--] = ' ';
 	}
 	return (str);
 }
