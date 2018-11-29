@@ -6,9 +6,12 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/29 17:09:35 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/11/29 17:13:24 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
+#include "libft/libft.h"
 
 char	*flag_hash(char	*str, char c)
 {
@@ -41,7 +44,7 @@ char	*flag_plus(char	*str, char c)
 
 	if (str[0] != '-')
 	{
-		if(!(str2 = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2))));
+		if(!(str2 = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2))))
 			return (NULL);
 		str2[0] = '+';
 		ft_strncpy(str2 + 1, str, ft_strlen(str));

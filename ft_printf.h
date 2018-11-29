@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 17:07:17 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 18:01:28 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ char			*flag_minus(char *str, char c);
 char			*flag_space(char *str, char c);
 char			*flag_hash(char *str, char c);
 char			*flag_zero(char *str, char c);
+char			*accuracy(char *str, int n);
+char			*field_width(char *str, int n);
 
 #endif
