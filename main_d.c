@@ -6,12 +6,14 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:20:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 18:11:39 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 19:05:12 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+
+#include <stdio.h>
 
 int main(int ac, char **av)
 {

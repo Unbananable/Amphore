@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/29 18:09:42 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 19:05:14 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*accuracy(char *str, int len)
 			len--;
 		}
 		free(str);
+		printf("passing by accu: %s\n", ret);
 		return (ret);
 	}
 	return (str);
@@ -56,6 +57,7 @@ char	*field_width(char *str, int len)
 			len--;
 		}
 		free(str);
+		printf("passing by width: %s\n", ret);
 		return (ret);
 	}
 	return (str);
