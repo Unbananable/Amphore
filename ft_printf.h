@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 18:01:28 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 18:11:37 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_flag
 }				t_flag;
 
 char			*parse_flag(char *str, char *flag);
+char			*parse_accufield(char *str, char *flag);
 char			*flag_plus(char *str, char c);
 char			*flag_minus(char *str, char c);
 char			*flag_space(char *str, char c);

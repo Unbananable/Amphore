@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/29 17:13:24 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 18:49:33 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,28 @@ char	*flag_minus(char *str, char c)
 {
 	int		i;
 	int		j;
+	int		space_nb;
+
+	i = -1;
+	j = 0;
+	space_nb = 0;
+	while (str[++i] == ' ')
+		space_nb++;
+	i = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
+	while (str[i])
+	{
+		str[j++] = str[i];
+		str[i] = ' ';
+		i++;
+	}
+	return (str);
+}
+/*
+{
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -73,3 +95,4 @@ char	*flag_minus(char *str, char c)
 	}
 	return (str);
 }
+*/

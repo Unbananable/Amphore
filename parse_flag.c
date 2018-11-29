@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:28:38 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 17:41:59 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 18:44:40 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static t_flag	*initialise_flag(void)
 
 	flag = malloc(sizeof(t_flag) * 5);
 	flag[0].c = ' ';
+	flag[1].c = '0';
 	flag[2].c = '+';
 	flag[3].c = '-';
 	flag[4].c = '#';
-	flag[1].c = '0';
 	flag[0].f = &flag_space;
+	flag[1].f = &flag_zero;
 	flag[2].f = &flag_plus;
 	flag[3].f = &flag_minus;
 	flag[4].f = &flag_hash;
-	flag[1].f = &flag_zero;
 	return (flag);
 }
 

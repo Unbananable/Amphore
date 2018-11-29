@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 15:05:33 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 16:41:15 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 18:15:37 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 
 int main(void)
 {
-	printf("TESTONS SON EFFICACITE % #ld\n", 1);
+	printf("++++++++++ %-4d\n", 1);
+	printf("++++++++++ %50.5d\n", 1);
+	printf("++++++++++ %5.50d\n", 1);
+	printf("++++++++++ %1.5d\n", 1);
+	printf("++++++++++ %5.1d\n", 1);
 	return (0);
 }
-
-t_flag init()
-
-t_flag *flag;
-
-t_flag.c = dd
-t_flag.c
-
-return (flag)
 
 /*
 typedef struct	s_conv
@@ -58,5 +53,6 @@ une fonction par flag
 une fct par conversion
 un parser :quelle conversion appliquer
 un parser : quel flag appliquer
+un parser: precision, largeur de champ
 
 */

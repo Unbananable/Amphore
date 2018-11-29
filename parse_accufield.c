@@ -6,14 +6,14 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 18:07:07 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 18:12:15 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-char	*parce_accufield(char *str, char *flg)/* /!\ */
+char	*parse_accufield(char *str, char *flg)/* /!\ */
 {
 	int		i;
 	int		accu;
