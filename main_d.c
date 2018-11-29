@@ -6,14 +6,12 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:20:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 19:05:12 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/29 19:15:40 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-
-#include <stdio.h>
 
 int main(int ac, char **av)
 {
@@ -30,5 +28,6 @@ int main(int ac, char **av)
 	str2 = parse_accufield(str3, av[1]);
 	str2 = parse_flag(str2, av[1]);
 	ft_putstr(str2);
+	ft_putchar('\n');
 	return (0);
 }
