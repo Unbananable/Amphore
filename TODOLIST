@@ -28,6 +28,9 @@ o gerer les differents flags en fonction des differentes conversions
 ================================== PARSE_CONV.C ================================
 o ecrire le parseur qui repere la conversion
 
+=============================== PARSE_MODIFIERS.C ==============================
+o ecrire le parseur qui repere les modificateurs de longueur (h, hh, l, ll...)
+
 ================================ CONV_FUNCTIONS.C ==============================
 o ecrire les fonctions de conversion
 
