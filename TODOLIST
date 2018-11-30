@@ -1,0 +1,25 @@
+=================================== TESTS ======================================
+o recomparer le resultat de printf avec ft_printf pour la conversion d
+
+================================== PRINTF.C ====================================
+o integrer les fonctions de stdarg pour la lecture des arguments de printf
+o organiser les parsers pour les differentes parties de "%......"
+o cas particulier : "%%"
+o cas particulier : pas d'argument
+o cas d'erreur : type de conversion et type d'argument incompatibles
+o cas d'erreur : pas le meme nombre de % et d'arguments
+
+================================= PARSE_FLAG.C =================================
+o attention : flag '0' : si '0' fait partie de la largeur de champ ou de la 
+  precision, il ne faut pas appliquer le flag '0'
+
+=============================== FLAG_FUNCTIONS.C ===============================
+o gerer les differents flags en fonction des differentes conversions
+
+================================== PARSE_CONV.C ================================
+o ecrire le parseur qui repere la conversion
+
+================================ CONV_FUNCTIONS.C ==============================
+o ecrire les fonctions de conversion
+
+
