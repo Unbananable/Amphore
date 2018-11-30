@@ -1,6 +1,11 @@
 =================================== TESTS ======================================
 o recomparer le resultat de printf avec ft_printf pour la conversion d
 
+================================== ELEGANZA ====================================
+o dans les parsers, ajouter un null a la fin pour enlever le nombre de fonction
+  dans la boucle (permet de rajouter simplement une fonction supplementaire sans
+  avoir a changer le chiffre partout)
+
 =================================== FINAL ======================================
 o leaks
 
