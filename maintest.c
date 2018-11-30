@@ -6,19 +6,20 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 15:05:33 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 19:46:02 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:14:27 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <unistd.h>
+
+void	ft_printf_d(char *flags, char *string);
 
 int main(void)
 {
-	printf("++++++++++ %-10.4d\n", 421421);
-	printf("++++++++++ %50.5d\n", 1);
-	printf("++++++++++ %5.50d\n", 1);
-	printf("++++++++++ %1.5d\n", 1);
-	printf("++++++++++ %5.1d\n", 1);
+	write(1, "ft_printf_d = ", 14);
+	ft_printf_d("+12.8-d", "42");
+	printf("\n     printf = %+12.8-d\n", 42);
 	return (0);
 }
 

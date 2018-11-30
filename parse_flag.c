@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:28:38 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 19:44:42 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/30 17:14:26 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,15 @@ static t_flag	*initialise_flag(void)
 char			*parse_flag(char *str, char *flg)
 {
 	int		i;
-	char	*ret;
 	t_flag	*flag;
 
 	i = 0;
 	flag = initialise_flag();
-	printf("str in parse_flag(begin): %s\n", str);
-	while(i < 5)
+	while (i < 5)
 	{
 		if (ft_strchr(flg, flag[i].c))
-		{
-			printf("str in parse_flag(middle - before function): %s\n", str);
-/* hmm... on obtient quoi avec flg[ft_strlen(flg) - 1] ? pourquoi on s'interesse au dernier char de la chaine ???  */
-			ret = flag[i].f(str, flg[ft_strlen(flg) - 1]);
-			printf("ret in parse_flag(middle - after function): %s\n", ret);
-		}
+			str = flag[i].f(str, flg[ft_strlen(flg) - 1]);
 		i++;
 	}
-	printf("ret in parse_flag(end): %s\n", ret);
-	return (ret);
+	return (str);
 }

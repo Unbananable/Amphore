@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 19:14:06 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/30 16:06:05 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,5 @@ char	*parse_accufield(char *str, char *flg)
 			str = field_width(str, field);
 		}
 	}
-	printf("str from parse_accufield: %s\n", str);
 	return (str);
 }

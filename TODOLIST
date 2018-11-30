@@ -1,6 +1,9 @@
 =================================== TESTS ======================================
 o recomparer le resultat de printf avec ft_printf pour la conversion d
 
+=================================== FINAL ======================================
+o leaks
+
 ================================== PRINTF.C ====================================
 o integrer les fonctions de stdarg pour la lecture des arguments de printf
 o organiser les parsers pour les differentes parties de "%......"
@@ -8,6 +11,7 @@ o cas particulier : "%%"
 o cas particulier : pas d'argument
 o cas d'erreur : type de conversion et type d'argument incompatibles
 o cas d'erreur : pas le meme nombre de % et d'arguments
+o cas d'erreur : type de conversion non valide
 
 ================================= PARSE_FLAG.C =================================
 o attention : flag '0' : si '0' fait partie de la largeur de champ ou de la 

@@ -6,28 +6,21 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:20:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 19:15:40 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/11/30 16:11:38 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int main(int ac, char **av)
+void	ft_printf_d(char *flags, char *string)
 {
 	char *str = "Reloue";
 	char *str2;
 	char *str3;
 
-	if (ac != 3)
-	{
-		ft_putstr("error");
-		return (0);
-	}
-	str3 = ft_strdup(av[2]);
-	str2 = parse_accufield(str3, av[1]);
-	str2 = parse_flag(str2, av[1]);
+	str3 = ft_strdup(string);
+	str2 = parse_accufield(str3, flags);
+	str2 = parse_flag(str2, flags);
 	ft_putstr(str2);
-	ft_putchar('\n');
-	return (0);
 }
