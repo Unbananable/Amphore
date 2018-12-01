@@ -10,8 +10,10 @@ o dans les parsers, ajouter un null a la fin pour enlever le nombre de fonction
 o leaks
 
 ================================== PRINTF.C ====================================
-o integrer les fonctions de stdarg pour la lecture des arguments de printf
-o organiser les parsers pour les differentes parties de "%......"
+x integrer les fonctions de stdarg pour la lecture des arguments de printf
+  (DONE)
+/ organiser les parsers pour les differentes parties de "%......" (MANQUE 
+  PARSE_MODIFIERS)
 o cas particulier : "%%"
 o cas particulier : pas d'argument
 o cas d'erreur : type de conversion et type d'argument incompatibles
@@ -19,19 +21,20 @@ o cas d'erreur : pas le meme nombre de % et d'arguments
 o cas d'erreur : type de conversion non valide
 
 ================================= PARSE_FLAG.C =================================
-o attention : flag '0' : si '0' fait partie de la largeur de champ ou de la 
-  precision, il ne faut pas appliquer le flag '0'
+/ attention : flag '0' : si '0' fait partie de la largeur de champ ou de la 
+  precision, il ne faut pas appliquer le flag '0' (NE SEMBLE PAS POSER DE PB
+  MAIS A CONFIRMER)
 
 =============================== FLAG_FUNCTIONS.C ===============================
 o gerer les differents flags en fonction des differentes conversions
 
 ================================== PARSE_CONV.C ================================
-o ecrire le parseur qui repere la conversion
+x ecrire le parseur qui repere la conversion (DONE)
 
 =============================== PARSE_MODIFIERS.C ==============================
 o ecrire le parseur qui repere les modificateurs de longueur (h, hh, l, ll...)
 
 ================================ CONV_FUNCTIONS.C ==============================
-o ecrire les fonctions de conversion
+o ecrire les fonctions de conversion (utiliser va_arg())
 
 
