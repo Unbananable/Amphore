@@ -3,6 +3,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+char			*converter(char *specs, va_list ap)
+{
+	char	*str;
+
+	str = parse_conv(va_list ap, specs[ft_strlen(specs) - 1]);
+	str = parse_accufield(str, specs);
+	str = parse_flag(str, specs);
+	free(specs);
+	return(str);
+}
+
 char			*ft_concaten(char *s1, const char *s2, size_t len1, size_t len2)
 /* On cherche a concatener deux string, en prenant les len1 premier bytes de s1
  * et les len2 premier bytes de s2, on obtient res */
@@ -51,13 +62,11 @@ static size_t	full_length(const char *format, va_list ap, char **res)
 			*res = ft_concaten(*res, format, total_len, i);
 			total_len += i;
 			format += i + 1;
-			i = /* /!\ fct(&format, &tmp, ap) /!\ */
-/* Il nous faudrait ici une fonction qui utilise les parsers, qui applique
- * ensuite les differents flags/accu/width, puis qui return la size_t strlen de
- * la string obtenue... j'imagine ça:
- * fct(const char **format, char **res, va_list ap)
- * avec size = ft_strlen(*res) à la fin, puis return (size) ? */
-			*res = ft_concaten(*res, tmp, total_len, i);
+			i = 0;
+			while (!ft_strchr(format[i], "cspdiouxXf")
+				i++;
+			tmp = converter(ft_strsub(format, 0, i), ap);
+			*res = ft_concaten(*res, tmp, total_len, ft_strlen(tmp));
 			total_len += i;
 			i = 0;
 /* i=0: Poursuite dans la string en cas de plusieurs % (on reprend ou on s'était

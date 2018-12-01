@@ -15,8 +15,8 @@
 
 typedef struct	s_conv
 {
-	char	c;
-	char	*(*f)(void);
+	char	conv;
+	char	*(*f)(va_list);
 }				t_conv;
 
 typedef struct	s_flag
