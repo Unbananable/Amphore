@@ -38,6 +38,7 @@ char			*conv_f(va_list ap, char *mod);
 char			*conv_c(va_list ap, char *mod);
 char			*conv_s(va_list ap, char *mod);
 char			*conv_p(va_list ap, char *mod);
+char			*conv_percentage(va_list ap, char *mod);
 char			*flag_plus(char *str, char c);
 char			*flag_minus(char *str, char c);
 char			*flag_space(char *str, char c);
