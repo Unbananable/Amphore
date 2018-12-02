@@ -1,4 +1,8 @@
-void	initialize_conv_functions(void)
+#include "ft_printf.h"
+#include <stdlib.h>
+#include <stdarg.h>
+
+static void	initialize_conv_functions(void)
 {
 	t_conv	*conv_list;
 
@@ -18,15 +22,15 @@ void	initialize_conv_functions(void)
 	conv_list[1].f = &conv_s;
 	conv_list[2].f = &conv_p;
 	conv_list[3].f = &conv_d;
-	conv_list[4].f = &conv_d;
+	conv_list[4].f = &conv_i;
 	conv_list[5].f = &conv_o;
 	conv_list[6].f = &conv_u;
 	conv_list[7].f = &conv_x;
-	conv_list[8].f = &conv_x;
+	conv_list[8].f = &conv_big_x;
 	conv_list[9].f = &conv_f;
 }
 
-char	*parse_conv(va_list ap, char conv)
+char		*parse_conv(va_list ap, char conv)
 {
 	char	*str;
 	int		i;

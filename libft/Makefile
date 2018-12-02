@@ -12,7 +12,8 @@
 
 NAME = libft.a
 FLAGS = -Wall -Werror -Wextra
-OBJ = 		ft_atoi.o		\
+OBJ = 		ft_itoa_base.o	\
+			ft_atoi.o		\
 			ft_bzero.o		\
 			ft_isalnum.o	\
 			ft_isascii.o	\

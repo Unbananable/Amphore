@@ -63,7 +63,7 @@ static size_t	full_length(const char *format, va_list ap, char **res)
 			total_len += i;
 			format += i + 1;
 			i = 0;
-			while (!ft_strchr(format[i], "cspdiouxXf")
+			while (!ft_strchr(format[i], "cspdiouxXf"))
 				i++;
 			tmp = converter(ft_strsub(format, 0, i), ap);
 			*res = ft_concaten(*res, tmp, total_len, ft_strlen(tmp));
