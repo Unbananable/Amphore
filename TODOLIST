@@ -17,7 +17,7 @@ x integrer les fonctions de stdarg pour la lecture des arguments de printf
   (DONE)
 / organiser les parsers pour les differentes parties de "%......" (MANQUE 
   PARSE_MODIFIERS)
-o cas particulier : "%%"
+x cas particulier : "%%"
 o cas particulier : pas d'argument
 o cas d'erreur : type de conversion et type d'argument incompatibles
 o cas d'erreur : pas le meme nombre de % et d'arguments
@@ -33,6 +33,7 @@ o gerer les differents flags en fonction des differentes conversions
 
 ================================== PARSE_CONV.C ================================
 x ecrire le parseur qui repere la conversion (DONE)
+o ajouter le modificateur dans le parseur
 
 =============================== PARSE_MODIFIERS.C ==============================
 o ecrire le parseur qui repere les modificateurs de longueur (h, hh, l, ll...)
