@@ -3,7 +3,7 @@
 
 char	*conv_percentage(va_list *ap, char *mod)
 {
-	*ap += 2;
-	mod++;
+	ap += 0;
+	mod += 0;
 	return (ft_strdup("%"));
 }
