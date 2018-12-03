@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/30 16:06:05 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/03 15:47:25 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*parse_accufield(char *str, char *flg)
 		if (flg[i] == '.')
 		{
 			accu = ft_atoi(flg + (i + 1));
-			str = accuracy(str, accu);
+			str = accuracy(str, accu, flg[ft_strlen(flg) - 1]);
 		}
 	}
 	i = -1;

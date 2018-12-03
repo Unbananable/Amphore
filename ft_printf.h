@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/29 18:11:37 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/03 15:46:21 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 typedef struct	s_conv
 {
 	char	conv;
-	char	*(*f)(va_list);
+	char	*(*f)(va_list, char *);
 }				t_conv;
 
 typedef struct	s_flag
@@ -44,7 +44,7 @@ char			*flag_minus(char *str, char c);
 char			*flag_space(char *str, char c);
 char			*flag_hash(char *str, char c);
 char			*flag_zero(char *str, char c);
-char			*accuracy(char *str, int n);
+char			*accuracy(char *str, int n, char c);
 char			*field_width(char *str, int n);
 
 #endif
