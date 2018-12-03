@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/11/30 17:02:11 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/03 15:39:29 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,55 @@
 
 char	*flag_hash(char	*str, char c)
 {
-	return (str);
+	char	*res;
+
+	if (c != 'x' && c != 'X' && c != 'o')
+		return (str);
+	if (c == 'x' || c == 'X')
+	{
+		if (!(res = ft_strnew(ft_strlen(str) + 3))
+			return (NULL);
+		res[0] = '0';
+		res[1] = (c == 'x' ? 'x' : 'X');
+		ft_strncpy(res + 2, str, ft_strlen(str));	
+	}
+	else
+	{
+		if (!(res = ft_strnew(ft_strlen(str) + 2))
+			return (NULL);
+		res[0] = '0';
+		ft_strncpy(res + 1, str, ft_strlen(str));
+	}
+	free(str);
+	return (res);
 }
 
 char	*flag_space(char *str, char c)
 {
 	int		i;
+	char	*res;
 
+	if (c != 'd' && c != 'i' && c != 'f')
+		return (str);
 	i = 0;
 	while (str[i] && str[i] < '0' && str[i] > '9')
 		str[i++] = ' ';
-	return (str);
+	if (i != 0)
+		return (str);
+	if (!(res = ft_strlen(str) + 2))
+		return (NULL);
+	res[0] = ' ';
+	ft_strncpy(res + 1, str, ft_strlen(str));
+	free(str);
+	return (res);
 }
 
 char	*flag_zero(char	*str, char c)
 {
 	int		i;
-		
+
+	if (c == 'c' || c == 's' || c == 'p')
+		return (str);
 	i = 0;
 	while (str[i] && str[i] < '0' && str[i] > '9')
 		str[i++] = '0';
@@ -43,6 +75,8 @@ char	*flag_plus(char	*str, char c)
 	char	*str2;
 	int		i;
 
+	if (c != 'd' && c != 'i' && c != 'f')
+		return (str);
 	i = 0;
 	while ((str[i] < '0' || str[i] > '9') && str[i] != '-')
 		i++;
