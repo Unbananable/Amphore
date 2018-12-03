@@ -8,6 +8,7 @@ o dans les parsers, ajouter un null a la fin pour enlever le nombre de fonction
 o les noms de fonctions ne sont pas case dependant donc conv_x == conv_X, 
   j'ai appelé ça big_x par defaut mais si tu preferes un autre nom on peut 
   trouver ça
+o faire une fonction a appeler pour mettre un message d'erreur
 
 =================================== FINAL ======================================
 o leaks
