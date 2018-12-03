@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/03 15:47:25 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/03 16:30:16 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 char	*parse_accufield(char *str, char *flg)
 {
 	int		i;
-	int		accu;
-	int		field;
+	size_t	accu;
+	size_t	field;
 
 	i = -1;
 	accu = 0;
@@ -26,7 +26,7 @@ char	*parse_accufield(char *str, char *flg)
 	{
 		if (flg[i] == '.')
 		{
-			accu = ft_atoi(flg + (i + 1));
+			accu = (size_t)ft_atoi(flg + (i + 1));
 			str = accuracy(str, accu, flg[ft_strlen(flg) - 1]);
 		}
 	}
@@ -35,7 +35,7 @@ char	*parse_accufield(char *str, char *flg)
 	{
 		if (flg[i] > '0' && flg[i] <= '9')
 		{
-			field = ft_atoi(flg + i);
+			field = (size_t)ft_atoi(flg + i);
 			str = field_width(str, field);
 		}
 	}

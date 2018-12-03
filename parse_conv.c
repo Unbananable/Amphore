@@ -30,7 +30,7 @@ static void	initialize_conv_functions(void)
 	conv_list[9].f = &conv_f;
 }
 
-char		*parse_conv(va_list ap, char conv)
+char		*parse_conv(va_list *ap, char conv)
 {
 	char	*str;
 	int		i;
