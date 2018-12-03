@@ -6,12 +6,15 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/03 17:07:34 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/03 17:35:14 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
+# include <stdarg.h>
+# include <string.h>
 
 typedef struct	s_conv
 {

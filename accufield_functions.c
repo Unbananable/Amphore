@@ -6,12 +6,12 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/03 16:30:58 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/03 17:33:03 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft/libft.h"
+#include <stdlib.h>
 
 char	*accuracy(char *str, size_t len, char c)
 {

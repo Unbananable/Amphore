@@ -30,16 +30,12 @@ o cas d'erreur : type de conversion non valide
   MAIS A CONFIRMER)
 
 =============================== FLAG_FUNCTIONS.C ===============================
-o gerer les differents flags en fonction des differentes conversions
+x gerer les differents flags en fonction des differentes conversions
 
 ================================== PARSE_CONV.C ================================
 x ecrire le parseur qui repere la conversion (DONE)
 o ajouter le modificateur dans le parseur
 
-=============================== PARSE_MODIFIERS.C ==============================
-o ecrire le parseur qui repere les modificateurs de longueur (h, hh, l, ll...)
-
 ================================ CONV_FUNCTIONS.C ==============================
 x ecrire les fonctions de conversion (utiliser va_arg()) 
   (DELETED - 1 FUNC PER CONV) 
-

@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/03 15:42:27 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/03 17:25:27 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*flag_hash(char	*str, char c)
 		return (str);
 	if (c == 'x' || c == 'X')
 	{
-		if (!(res = ft_strnew(ft_strlen(str) + 3))
+		if (!(res = ft_strnew(ft_strlen(str) + 3)))
 			return (NULL);
 		res[0] = '0';
 		res[1] = (c == 'x' ? 'x' : 'X');
@@ -29,7 +29,7 @@ char	*flag_hash(char	*str, char c)
 	}
 	else
 	{
-		if (!(res = ft_strnew(ft_strlen(str) + 2))
+		if (!(res = ft_strnew(ft_strlen(str) + 2)))
 			return (NULL);
 		res[0] = '0';
 		ft_strncpy(res + 1, str, ft_strlen(str));
@@ -50,7 +50,7 @@ char	*flag_space(char *str, char c)
 		str[i++] = ' ';
 	if (i != 0)
 		return (str);
-	if (!(res = ft_strlen(str) + 2))
+	if (!(res = ft_strnew(ft_strlen(str) + 2)))
 		return (NULL);
 	res[0] = ' ';
 	ft_strncpy(res + 1, str, ft_strlen(str));
@@ -102,6 +102,7 @@ char	*flag_minus(char *str, char c)
 	int		space_nb;
 	char	*tmp;
 
+	c += 0;
 	i = -1;
 	j = 0;
 	space_nb = 0;

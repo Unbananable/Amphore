@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-static void	initialize_conv_functions(void)
+static t_conv	*initialize_conv_functions(void)
 {
 	t_conv	*conv_list;
 
@@ -28,6 +28,7 @@ static void	initialize_conv_functions(void)
 	conv_list[7].f = &conv_x;
 	conv_list[8].f = &conv_big_x;
 	conv_list[9].f = &conv_f;
+	return (conv_list);
 }
 
 char		*parse_conv(va_list *ap, char conv)
@@ -36,7 +37,7 @@ char		*parse_conv(va_list *ap, char conv)
 	int		i;
 	t_conv	*conv_list;
 
-	conv_list = initialize_conv_functions();
+	list = initialize_conv_functions();
 	i = -1;
 	while (++i < 10)
 		if (conv == conv_list[i].conv)

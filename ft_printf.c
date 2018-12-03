@@ -1,5 +1,5 @@
 #include "libft/libft.h"
-#include <stdarg.h>
+#include "ft_printf.h"
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -7,7 +7,7 @@ char			*converter(char *specs, va_list *ap)
 {
 	char	*str;
 
-	str = parse_conv(va_list ap, specs[ft_strlen(specs) - 1]);
+	str = parse_conv(ap, specs[ft_strlen(specs) - 1]);
 	str = parse_accufield(str, specs);
 	str = parse_flag(str, specs);
 	free(specs);
@@ -63,9 +63,9 @@ static size_t	full_length(const char *format, va_list *ap, char **res)
 			total_len += i;
 			format += i + 1;
 			i = 0;
-			while (!ft_strchr(format[i], "cspdiouxXf"))
+			while (!ft_strchr("cspdiouxXf", format[i]))
 				i++;
-			tmp = converter(ft_strsub(format, 0, i), &ap);
+			tmp = converter(ft_strsub(format, 0, i), ap);
 			*res = ft_concaten(*res, tmp, total_len, ft_strlen(tmp));
 			total_len += i;
 			i = 0;
