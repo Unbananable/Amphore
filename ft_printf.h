@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/03 17:35:14 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/04 16:20:11 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ typedef struct	s_flag
 
 char			*parse_flag(char *str, char *flag);
 char			*parse_accufield(char *str, char *flag);
-char			*parse_conv(va_list *ap, char conv);
-char			*conv_d(va_list *ap, char *mod);
-char			*conv_i(va_list *ap, char *mod);
-char			*conv_o(va_list *ap, char *mod);
-char			*conv_u(va_list *ap, char *mod);
-char			*conv_x(va_list *ap, char *mod);
-char			*conv_big_x(va_list *ap, char *mod);
-char			*conv_f(va_list *ap, char *mod);
-char			*conv_c(va_list *ap, char *mod);
-char			*conv_s(va_list *ap, char *mod);
-char			*conv_p(va_list *ap, char *mod);
+char			*parse_conv(va_list ap, char *specs);
+char			*conv_d(va_list ap, char *mod);
+char			*conv_i(va_list ap, char *mod);
+char			*conv_o(va_list ap, char *mod);
+char			*conv_u(va_list ap, char *mod);
+char			*conv_x(va_list ap, char *mod);
+char			*conv_big_x(va_list ap, char *mod);
+char			*conv_f(va_list ap, char *mod);
+char			*conv_c(va_list ap, char *mod);
+char			*conv_s(va_list ap, char *mod);
+char			*conv_p(va_list ap, char *mod);
 char			*conv_percentage(va_list *ap, char *mod);
 char			*flag_plus(char *str, char c);
 char			*flag_minus(char *str, char c);

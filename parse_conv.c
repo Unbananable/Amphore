@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include "libft/libft.h"
 #include <stdlib.h>
 #include <stdarg.h>
 
@@ -7,7 +8,7 @@ static t_conv	*initialize_conv_functions(void)
 	t_conv	*conv_list;
 
 	if (!(conv_list = (t_conv *)malloc(sizeof(t_conv) * 10)))
-		return;
+		return (NULL);
 	conv_list[0].conv = 'c';
 	conv_list[1].conv = 's';
 	conv_list[2].conv = 'p';
@@ -31,20 +32,39 @@ static t_conv	*initialize_conv_functions(void)
 	return (conv_list);
 }
 
-char		*parse_conv(va_list *ap, char conv)
+static char	*get_mod(char *specs)
+{
+	if (ft_strstr(specs, "hh"))
+		return (ft_strdup("hh"));
+	else if (ft_strstr(specs, "ll"))
+		return (ft_strdup("ll"));
+	else if (ft_strchr(specs, 'h'))
+		return (ft_strdup("h"));
+	else if (ft_strchr(specs, 'l'))
+		return (ft_strdup("l"));
+	else
+		return (ft_strdup(""));
+}
+
+char		*parse_conv(va_list ap, char* specs)
 {
 	char	*str;
 	int		i;
 	t_conv	*conv_list;
+	char	*mod;
+	char	conv;
 
-	list = initialize_conv_functions();
+	mod = get_mod(specs);
+	conv = specs[ft_strlen(specs) - 1];
+	conv_list = initialize_conv_functions();
 	i = -1;
 	while (++i < 10)
 		if (conv == conv_list[i].conv)
 		{
-			str = conv_list[i].f(ap);
+			str = conv_list[i].f(ap, mod);
 			i = 10;
 		}
 	free(conv_list);
+	free(mod);
 	return (str);
 }

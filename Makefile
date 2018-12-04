@@ -6,7 +6,7 @@
 #    By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 09:14:19 by dtrigalo          #+#    #+#              #
-#    Updated: 2018/12/03 17:20:47 by anleclab         ###   ########.fr        #
+#    Updated: 2018/12/04 16:17:00 by anleclab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = accufield_functions.c \
 	   parse_conv.c \
 	   parse_flag.c
 OBJ = $(SRCS:.c=.o)
+HEADERS = ft_printf.h
 
 all: $(NAME)
 
@@ -37,7 +38,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./libft
-	gcc $(FLAGS) $(OBJ) -o $(NAME) -Llibft -lft -I$(HEADERS)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 

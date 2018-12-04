@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char			*converter(char *specs, va_list *ap)
+char			*converter(char *specs, va_list ap)
 {
 	char	*str;
 
-	str = parse_conv(ap, specs[ft_strlen(specs) - 1]);
+	str = parse_conv(ap, specs);
 	str = parse_accufield(str, specs);
 	str = parse_flag(str, specs);
 	free(specs);
@@ -34,7 +34,7 @@ char			*ft_concaten(char *s1, const char *s2, size_t len1, size_t len2)
 	return (res);
 }
 
-static size_t	full_length(const char *format, va_list *ap, char **res)
+static size_t	full_length(const char *format, va_list ap, char **res)
 /* On avance dans format jusqu'à trouver le % tant convoité, res devient une str
  * égale à toute la premiere partie avant le %. Ensuite, on applique la fonction
  * encore inexistante 'fct' qui va nous return la size du 'contenu' du %. Dans 
@@ -89,7 +89,7 @@ int				ft_printf(const char *format, ...)
 
 	res = NULL;
 	va_start(ap, format);
-	size = full_length(format, &ap, &res);
+	size = full_length(format, ap, &res);
 	write(1, res, size);
 	free(res);
 	va_end(ap);

@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
-char	*conv_big_x(va_list *ap, char *mod)
+char	*conv_big_x(va_list ap, char *mod)
 {
 	int		i;
 	char	*r;

@@ -34,7 +34,8 @@ x gerer les differents flags en fonction des differentes conversions
 
 ================================== PARSE_CONV.C ================================
 x ecrire le parseur qui repere la conversion (DONE)
-o ajouter le modificateur dans le parseur
+x ajouter le modificateur dans le parseur
+o cas d'erreur ? plusieurs omdificateurs
 
 ================================ CONV_FUNCTIONS.C ==============================
 x ecrire les fonctions de conversion (utiliser va_arg()) 
