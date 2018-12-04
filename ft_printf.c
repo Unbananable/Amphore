@@ -3,12 +3,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include <stdio.h>
+
 char			*converter(char *specs, va_list ap)
 {
 	char	*str;
 
 	str = parse_conv(ap, specs);
-	str = parse_accufield(str, specs);
 	str = parse_flag(str, specs);
 	free(specs);
 	return(str);
@@ -25,7 +26,7 @@ char			*ft_concaten(char *s1, const char *s2, size_t len1, size_t len2)
 	res = ft_strnew(size);
 	if (!res)
 		return (NULL);
-	if (res)
+	if (res && len1)
 	{
 		ft_strncpy(res, s1, len1);
 		free(s1);
@@ -34,7 +35,7 @@ char			*ft_concaten(char *s1, const char *s2, size_t len1, size_t len2)
 	return (res);
 }
 
-static size_t	full_length(const char *format, va_list ap, char **res)
+void			full_length(const char *format, va_list ap, char **res)
 /* On avance dans format jusqu'à trouver le % tant convoité, res devient une str
  * égale à toute la premiere partie avant le %. Ensuite, on applique la fonction
  * encore inexistante 'fct' qui va nous return la size du 'contenu' du %. Dans 
@@ -52,6 +53,8 @@ static size_t	full_length(const char *format, va_list ap, char **res)
 	char		*tmp;
 	size_t		i;
 	size_t		total_len;
+	char		*specs;
+	int			j;
 
 	i = 0;
 	total_len = 0;
@@ -62,12 +65,14 @@ static size_t	full_length(const char *format, va_list ap, char **res)
 			*res = ft_concaten(*res, format, total_len, i);
 			total_len += i;
 			format += i + 1;
-			i = 0;
-			while (!ft_strchr("cspdiouxXf", format[i]))
-				i++;
-			tmp = converter(ft_strsub(format, 0, i), ap);
+			j = 0;
+			while (format[j] && !ft_strchr("cspdiouxXf", format[j]))
+				j++;
+			specs = ft_strsub(format, 0, j + 1);
+			format += j + 1;
+			tmp = converter(specs, ap);
 			*res = ft_concaten(*res, tmp, total_len, ft_strlen(tmp));
-			total_len += i;
+			total_len += ft_strlen(tmp);
 			i = 0;
 /* i=0: Poursuite dans la string en cas de plusieurs % (on reprend ou on s'était
  * arreté grace au (format += i+1) ligne 53 */
@@ -76,22 +81,19 @@ static size_t	full_length(const char *format, va_list ap, char **res)
 			i++;
 	}
 	i = ft_strlen(format);
-	*res = ft_concaten(*res, format, total_len, i);
-	total_len += 1;
-	return (total_len);
+	*res = ft_concaten(*res, format, ft_strlen(*res), i);
 }
 
 int				ft_printf(const char *format, ...)
 {
 	char		*res;
 	va_list		ap;
-	size_t		size;
 
 	res = NULL;
 	va_start(ap, format);
-	size = full_length(format, ap, &res);
-	write(1, res, size);
+	full_length(format, ap, &res);
+	write(1, res, ft_strlen(res));
 	free(res);
 	va_end(ap);
-	return((int)size);
+	return((int)ft_strlen(res));
 }

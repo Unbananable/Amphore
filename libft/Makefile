@@ -6,7 +6,7 @@
 #    By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 09:24:35 by dtrigalo          #+#    #+#              #
-#    Updated: 2018/11/15 20:48:18 by dtrigalo         ###   ########.fr        #
+#    Updated: 2018/12/04 18:37:21 by anleclab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,8 @@ OBJ = 		ft_itoa_base.o	\
 			ft_islower.o	\
 			ft_is_prime.o	\
 			ft_power.o		\
-			ft_fact.o
+			ft_fact.o		\
+			ft_doubletoa.o
 SRCS = $(OBJ:.o=.c)
 HEADERS = libft.h
 

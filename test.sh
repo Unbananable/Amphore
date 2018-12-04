@@ -1,0 +1,1 @@
+make re && gcc -Wall -Werror -Wextra -L. -lftprintf -L./libft -lft main.c && ./a.out | cat -e

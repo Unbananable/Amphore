@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/04 16:20:11 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/04 19:33:41 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_flag
 	char	*(*f)(char *, char);
 }				t_flag;
 
+int				ft_printf(const char *format, ...);
 char			*parse_flag(char *str, char *flag);
 char			*parse_accufield(char *str, char *flag);
 char			*parse_conv(va_list ap, char *specs);
@@ -37,7 +38,7 @@ char			*conv_o(va_list ap, char *mod);
 char			*conv_u(va_list ap, char *mod);
 char			*conv_x(va_list ap, char *mod);
 char			*conv_big_x(va_list ap, char *mod);
-char			*conv_f(va_list ap, char *mod);
+char			*conv_f(va_list ap, char *specs);
 char			*conv_c(va_list ap, char *mod);
 char			*conv_s(va_list ap, char *mod);
 char			*conv_p(va_list ap, char *mod);

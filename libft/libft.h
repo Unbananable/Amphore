@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:42:05 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/11/18 10:28:59 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/04 18:37:50 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ char			*ft_strtrim(char const *s);
 char			*ft_itoa(int n);
 char			*ft_stpcpy(char *dst, const char *src);
 char			*ft_stralloc(const char *str);
+char			*ft_doubletoa(double d, int accuracy);
 
 char			**ft_strsplit(char const *s, char c);
 

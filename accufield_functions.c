@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/03 17:33:03 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/04 18:31:45 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*accuracy(char *str, size_t len, char c)
 	char	*ret;
 	int		i;
 
-	if (c == 'c' || c == 'p')
+	if (c == 'c' || c == 'p' || c == 'f')
 		return (str);
 	if (c == 's' && len > ft_strlen(str))
 	{
@@ -44,20 +44,7 @@ char	*accuracy(char *str, size_t len, char c)
 		free(str);
 		return (ret);
 	}
-	i = 0;
-	while (str[i] != '.')
-		i++;
-	if (!(ret = ft_strnew(i + len + 1)))
-		return (NULL);
-	if (i + len > ft_strlen(str))
-	{
-		ft_strncpy(ret, str, ft_strlen(str));
-		ft_memset(ret + ft_strlen(str), i + len - ft_strlen(str), '0');
-		free(str);
-		return (ret);
-	}
-	ft_strncpy(ret, str, i + len);
-	return (ret);
+	return (str);
 }
 
 char	*field_width(char *str, size_t len)
