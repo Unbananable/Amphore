@@ -1,5 +1,5 @@
 =================================== TESTS ======================================
-o recomparer le resultat de printf avec ft_printf pour la conversion d
+o TEST ALL THE THINGS
 
 ================================== ELEGANZA ====================================
 o dans les parsers, ajouter un null a la fin pour enlever le nombre de fonction
@@ -39,4 +39,5 @@ o cas d'erreur ? plusieurs omdificateurs
 
 ================================ CONV_FUNCTIONS.C ==============================
 x ecrire les fonctions de conversion (utiliser va_arg()) 
-  (DELETED - 1 FUNC PER CONV) 
+  (DELETED - 1 FUNC PER CONV)
+o gerer les modificateurs de f
