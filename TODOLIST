@@ -1,11 +1,11 @@
 =================================== TESTS ======================================
 o TEST ALL THE THINGS
-	o conv c
-	o conv s
-	o conv p
-	o conv d
+	x conv c
+	x conv s
+	x conv p
+	/ conv d (WITHOUT MODIFIERS)
 	o conv i
-	o conv o
+	/ conv o (WITHOUT MODIFIERS)
 	o conv u
 	o conv x
 	o conv X
@@ -19,6 +19,8 @@ o les noms de fonctions ne sont pas case dependant donc conv_x == conv_X,
   j'ai appelé ça big_x par defaut mais si tu preferes un autre nom on peut 
   trouver ça
 o faire une fonction (error.c) a appeler pour mettre un message d'erreur
+o supprimer conv_i et utiliser conv_d a la place
+o mettre les conv dans un fichier
 
 =================================== FINAL ======================================
 o leaks
@@ -30,8 +32,7 @@ o couleurs
 ================================== PRINTF.C ====================================
 x integrer les fonctions de stdarg pour la lecture des arguments de printf
   (DONE)
-/ organiser les parsers pour les differentes parties de "%......" (MANQUE 
-  PARSE_MODIFIERS)
+x organiser les parsers pour les differentes parties de "%......"
 x cas particulier : "%%"
 o cas particulier : pas d'argument
 o cas d'erreur : type de conversion et type d'argument incompatibles
@@ -52,6 +53,5 @@ x ajouter le modificateur dans le parseur
 o cas d'erreur ? plusieurs modificateurs
 
 ================================ CONV_FUNCTIONS.C ==============================
-x ecrire les fonctions de conversion (utiliser va_arg()) 
-  (DELETED - 1 FUNC PER CONV)
+x ecrire les fonctions de conversion (utiliser va_arg())
 o gerer les modificateurs de f
