@@ -6,28 +6,29 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:28:38 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/05 14:05:44 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/05 16:27:33 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static t_flag	*initialise_flag(void)
 {
 	t_flag	*flag;
 
 	flag = malloc(sizeof(t_flag) * 5);
-	flag[0].c = ' ';
-	flag[1].c = '0';
-	flag[2].c = '+';
-	flag[3].c = '-';
+	flag[3].c = ' ';
+	flag[0].c = '0';
+	flag[1].c = '+';
+	flag[2].c = '-';
 	flag[4].c = '#';
-	flag[0].f = &flag_space;
-	flag[1].f = &flag_zero;
-	flag[2].f = &flag_plus;
-	flag[3].f = &flag_minus;
+	flag[3].f = &flag_space;
+	flag[0].f = &flag_zero;
+	flag[1].f = &flag_plus;
+	flag[2].f = &flag_minus;
 	flag[4].f = &flag_hash;
 	return (flag);
 }

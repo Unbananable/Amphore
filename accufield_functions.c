@@ -6,17 +6,19 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/05 12:50:04 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/05 16:24:55 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 char	*accuracy(char *str, size_t len, char c)
 {
 	char	*ret;
 	int		i;
+	int		isneg;
 
 	if (c == 'c' || c == 'f' || (c == 'p' && len < ft_strlen(str)))
 		return (str);
@@ -42,19 +44,16 @@ char	*accuracy(char *str, size_t len, char c)
 		free(str);
 		return (ret);
 	}
-	if (c != 'f' && ft_strlen(str) < len)
+	if (c != 'f' && ft_strlen(str) <= len)
 	{
-		if (!(ret = (char *)malloc(sizeof(char) * (len + 1))))
+		isneg = (*str == '-' ? 1 : 0);
+		if (!(ret = (char *)malloc(sizeof(char) * (len + isneg + 1))))
 			return (NULL);
-		ret[len] = 0;
-		ft_memset(ret, '0', len);
-		i = ft_strlen(str) - 1;
-		while (i >= 0)
-		{
-			ret[len - 1] = str[i];
-			i--;
-			len--;
-		}
+		ret[len + isneg] = 0;
+		ft_memset(ret, '0', len + 2 * isneg - ft_strlen(str));
+		ft_strncat(ret, str + isneg, ft_strlen(str) - isneg);
+		if (isneg)
+			*ret = '-';
 		free(str);
 		return (ret);
 	}

@@ -6,16 +6,18 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/05 14:00:25 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/05 17:39:32 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft/libft.h"
 
 char	*flag_hash(char	*str, char c)
 {
 	char	*res;
+	int		i;
 
 	if (c != 'x' && c != 'X' && c != 'o')
 		return (str);
@@ -29,6 +31,16 @@ char	*flag_hash(char	*str, char c)
 	}
 	else
 	{
+		if (str[0] == '0')
+			return (str);
+		if (str[0] == ' ')
+		{
+			i = 0;
+			while (str[i] == ' ')
+				i++;
+			str[i - 1] = '0';
+			return (str);
+		}
 		if (!(res = ft_strnew(ft_strlen(str) + 2)))
 			return (NULL);
 		res[0] = '0';
@@ -42,18 +54,20 @@ char	*flag_space(char *str, char c)
 {
 	int		i;
 	char	*res;
+	int		hasendspace;
 
 	if (c != 'd' && c != 'i' && c != 'f')
 		return (str);
 	i = 0;
-	while (str[i] && str[i] < '0' && str[i] > '9')
+	while (str[i] && str[i] != '-' && str[i] != '+' && (str[i] < '0' || str[i] > '9'))
 		str[i++] = ' ';
-	if (i != 0)
+	if (i != 0 || str[i] == '-' || str[i] == '+')
 		return (str);
-	if (!(res = ft_strnew(ft_strlen(str) + 2)))
+	hasendspace = (str[ft_strlen(str) - 1] == ' ' ? 1 : 0);
+	if (!(res = ft_strnew(ft_strlen(str) + 2 - hasendspace)))
 		return (NULL);
 	res[0] = ' ';
-	ft_strncpy(res + 1, str, ft_strlen(str));
+	ft_strncpy(res + 1, str, ft_strlen(str) - hasendspace);
 	free(str);
 	return (res);
 }
@@ -61,6 +75,7 @@ char	*flag_space(char *str, char c)
 char	*flag_zero(char	*str, char c)
 {
 	int		i;
+	int		isneg;
 
 	if (c == 'p')
 	{
@@ -75,8 +90,15 @@ char	*flag_zero(char	*str, char c)
 		return (str);
 	}
 	i = 0;
-	while (str[i] && str[i] == ' ')
+	isneg = 0;
+	while (str[i] && (str[i] == ' ' || str[i] == '-'))
+	{
+		if (str[i] == '-')
+			isneg = 1;
 		str[i++] = '0';
+	}
+	if (isneg)
+		str[0] = '-';
 	return (str);
 }
 
@@ -123,7 +145,6 @@ char	*flag_minus(char *str, char c)
 	{
 		str[j++] = tmp[i++];
 	}
-	free(tmp);
 	while (str[i - space_nb])
 	{
 		str[i - space_nb--] = ' ';
