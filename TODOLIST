@@ -1,5 +1,15 @@
 =================================== TESTS ======================================
 o TEST ALL THE THINGS
+	o conv c
+	o conv s
+	o conv p
+	o conv d
+	o conv i
+	o conv o
+	o conv u
+	o conv x
+	o conv X
+	o conv f
 
 ================================== ELEGANZA ====================================
 o dans les parsers, ajouter un null a la fin pour enlever le nombre de fonction
@@ -12,6 +22,10 @@ o faire une fonction (error.c) a appeler pour mettre un message d'erreur
 
 =================================== FINAL ======================================
 o leaks
+
+=================================== BONUS ======================================
+o unicode
+o couleurs
 
 ================================== PRINTF.C ====================================
 x integrer les fonctions de stdarg pour la lecture des arguments de printf
@@ -35,7 +49,7 @@ x gerer les differents flags en fonction des differentes conversions
 ================================== PARSE_CONV.C ================================
 x ecrire le parseur qui repere la conversion (DONE)
 x ajouter le modificateur dans le parseur
-o cas d'erreur ? plusieurs omdificateurs
+o cas d'erreur ? plusieurs modificateurs
 
 ================================ CONV_FUNCTIONS.C ==============================
 x ecrire les fonctions de conversion (utiliser va_arg()) 
