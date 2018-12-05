@@ -29,7 +29,7 @@ static char		convert_letter(int n)
 	if (n == 14)
 		return ('e');
 	if (n == 15)
-		return ('d');
+		return ('f');
 	return (n + 48);
 }
 

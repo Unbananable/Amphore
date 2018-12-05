@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/05 11:40:26 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/05 14:00:25 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,18 @@ char	*flag_zero(char	*str, char c)
 {
 	int		i;
 
-	if (c == 's' || c == 'p')
+	if (c == 'p')
+	{
+		i = 0;
+		while (str[i] && str[i] == ' ')
+		{
+			str[i] = (i == 1 ? 'x' : '0');
+			i++;
+		}
+		if (i)
+			str[i + 1] = '0';
 		return (str);
+	}
 	i = 0;
 	while (str[i] && str[i] == ' ')
 		str[i++] = '0';

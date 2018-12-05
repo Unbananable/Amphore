@@ -3,6 +3,6 @@
 
 int		main(void)
 {
-	ft_printf("\nft_printf : %-15c\n", 'a');
-	printf("   printf : %-15c\n", 'a');
+	ft_printf("\nft_printf : % d\n", -1992);
+	printf("   printf : % d\n", -1992);
 }
