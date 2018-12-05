@@ -6,7 +6,7 @@
 #    By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 09:14:19 by dtrigalo          #+#    #+#              #
-#    Updated: 2018/12/04 18:40:13 by anleclab         ###   ########.fr        #
+#    Updated: 2018/12/05 18:11:09 by anleclab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS = accufield_functions.c \
 	   parse_accufield.c \
 	   parse_conv.c \
 	   parse_flag.c \
-	   conv_f.c
+	   conv_f.c \
+	   exit_error.c
 OBJ = $(SRCS:.c=.o)
 HEADERS = ft_printf.h
 
