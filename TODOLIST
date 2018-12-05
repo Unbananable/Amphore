@@ -38,6 +38,7 @@ o cas particulier : pas d'argument
 o cas d'erreur : type de conversion et type d'argument incompatibles
 o cas d'erreur : pas le meme nombre de % et d'arguments
 o cas d'erreur : type de conversion non valide
+o ajouter le retour de printf
 
 ================================= PARSE_FLAG.C =================================
 / attention : flag '0' : si '0' fait partie de la largeur de champ ou de la 
