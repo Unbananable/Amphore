@@ -6,7 +6,7 @@
 #    By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 09:14:19 by dtrigalo          #+#    #+#              #
-#    Updated: 2018/12/06 10:22:04 by anleclab         ###   ########.fr        #
+#    Updated: 2018/12/06 11:23:22 by anleclab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS = ft_printf.c					\
 	   flag_functions.c				\
 	   exit_error.c
 OBJ = $(SRCS:.c=.o)
-HEADERS = ft_printf.h
+HEADERS = ft_printf.h libft/libft.h
 
 all: $(NAME)
 

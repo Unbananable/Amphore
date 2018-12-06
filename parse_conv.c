@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:17:35 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 09:19:29 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 11:07:55 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_conv	*initialize_conv_functions(void)
 	t_conv	*conv_list;
 
 	if (!(conv_list = (t_conv *)malloc(sizeof(t_conv) * 9)))
-		return (NULL);
+		exit_error("error: malloc failed\n", 0);
 	conv_list[0].conv = 'c';
 	conv_list[1].conv = 's';
 	conv_list[2].conv = 'p';

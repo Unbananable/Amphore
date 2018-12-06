@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/05 18:35:00 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:45:32 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char		*field_width(char *str, size_t len)
 	if (ft_strlen(str) < len)
 	{
 		if (!(ret = (char *)malloc(sizeof(char) * (len + 1))))
-			return (NULL);
+			exit_error("error: malloc failed\n", 1, str);
 		ret[len] = 0;
 		ft_memset(ret, ' ', len);
 		i = ft_strlen(str);

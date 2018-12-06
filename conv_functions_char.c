@@ -6,11 +6,12 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:56:09 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 09:57:58 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 11:18:36 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <stdlib.h>
 
@@ -23,7 +24,7 @@ char	*conv_p(va_list ap, char *mod)
 	mod += 0;
 	str = va_arg(ap, void *);
 	if (!(res = ft_strnew(19)))
-		return (NULL);
+		exit_error("error: malloc failed\n", 1, str);
 	ft_strncpy(res, "0x", 2);
 	conv = ft_itoa_base((unsigned long int)str, 16);
 	ft_strncat(res, conv, 16);

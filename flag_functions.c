@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 10:24:01 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:47:46 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*flag_space(char *str, char c)
 		return (str);
 	hasendspace = (str[ft_strlen(str) - 1] == ' ' ? 1 : 0);
 	if (!(res = ft_strnew(ft_strlen(str) + 2 - hasendspace)))
-		return (NULL);
+		exit_error("error: malloc failed\n", 1, str);
 	res[0] = ' ';
 	ft_strncpy(res + 1, str, ft_strlen(str) - hasendspace);
 	free(str);
@@ -106,7 +106,7 @@ char	*flag_plus(char *str, char c)
 	if (!i && str[i] != '-')
 	{
 		if (!(str2 = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2))))
-			return (NULL);
+			exit_error("error: malloc failed\n", 1, str);
 		str2[0] = '+';
 		ft_strncpy(str2 + 1, str, ft_strlen(str));
 		str2[ft_strlen(str) + 1] = 0;

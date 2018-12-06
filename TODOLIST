@@ -4,23 +4,29 @@ o TEST ALL THE THINGS
 	x conv s
 	x conv p
 	/ conv d (WITHOUT MODIFIERS)
-	o conv i
 	/ conv o (WITHOUT MODIFIERS)
 	o conv u
 	o conv x
 	o conv X
 	o conv f
+o Gerer les erreurs d'arguments (on n'a pas de crash mais a savoir si on laisse
+  la fonction marcher ou si on met un message d'erreur)
+	o arguments en trop: printf met un warning "data argument not used by format
+	  string"
+	o argument manquant: printf met un warning "more % conversions than data
+	  arguments" et affiche des trucs randoms
+	o arguments du mauvais type: printf met un warning "format specifies type
+	  '...' but the argument has type '...' et ne marche pas toujours
 
 ================================== ELEGANZA ====================================
 o dans les parsers, ajouter un null a la fin pour enlever le nombre de fonction
   dans la boucle (permet de rajouter simplement une fonction supplementaire sans
   avoir a changer le chiffre partout)
-o les noms de fonctions ne sont pas case dependant donc conv_x == conv_X, 
-  j'ai appelé ça big_x par defaut mais si tu preferes un autre nom on peut 
-  trouver ça
-o faire une fonction (error.c) a appeler pour mettre un message d'erreur
-o supprimer conv_i et utiliser conv_d a la place
-o mettre les conv dans un fichier
+o rendre le tout plus simple pour ajouter des fonctionalites
+x faire une fonction (error.c) a appeler pour mettre un message d'erreur
+x supprimer conv_i et utiliser conv_d a la place
+x mettre les conv dans un fichier
+o renommer les variables pour que le langage soit coherent partout
 
 =================================== FINAL ======================================
 o leaks
