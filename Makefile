@@ -6,7 +6,7 @@
 #    By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 09:14:19 by dtrigalo          #+#    #+#              #
-#    Updated: 2018/12/06 11:42:24 by anleclab         ###   ########.fr        #
+#    Updated: 2018/12/06 15:02:22 by anleclab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS = ft_printf.c					\
 	   accufield_functions.c		\
 	   parse_flag.c					\
 	   flag_functions.c				\
-	   exit_error.c
+	   exit_error.c					\
+	   tools.c
 OBJ = $(SRCS:.c=.o)
 HEADERS = ft_printf.h libft/libft.h
 

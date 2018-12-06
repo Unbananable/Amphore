@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 12:18:32 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/06 19:11:32 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct	s_flag
 	char	c;
 	char	*(*f)(char *, char);
 }				t_flag;
+
+typedef struct	s_form
+{
+	int			i;
+	int			cnt;
+	const char	*fmt;
+}				t_form;
 
 int				ft_printf(const char *format, ...);
 int				param_len(const char *format);
@@ -53,5 +60,7 @@ char			*flag_zero(char *str, char c);
 char			*accuracy(char *str, size_t len, char c);
 char			*field_width(char *str, size_t len);
 void			exit_error(char *er_mess, int nbfree, ...);
+int				move_right(char *str, int nbchar, char c);
+char			*suffix(char *suf, char *str);
 
 #endif

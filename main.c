@@ -3,6 +3,6 @@
 
 int		main(void)
 {
-	ft_printf("ft_printf: Hello %c\n", 46.3);
-	printf("   printf: Hello %c\n", 46.3);
+	ft_printf("\nft_printf: %03.2d\n", 0);
+	printf("   printf: %03.2d\n", 0);
 }

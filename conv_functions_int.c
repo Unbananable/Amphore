@@ -6,13 +6,14 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:57:10 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 09:57:13 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:30:53 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdarg.h>
 #include <stdint.h>
+#include <stdio.h>
 
 char	*conv_d(va_list ap, char *mod)
 {
@@ -33,7 +34,7 @@ char	*conv_d(va_list ap, char *mod)
 		r = va_arg(ap, long long int);
 	else if (*mod == 0)
 		r = va_arg(ap, int);
-	return (ft_itoa(r));
+	return (ft_llitoa(r));
 }
 
 char	*conv_o(va_list ap, char *mod)

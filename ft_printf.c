@@ -101,6 +101,7 @@ int			ft_printf(const char *format, ...)
 				anc.i++;
 		}
 		else if (anc.fmt[anc.i] == '%')
+		if (format[i] == '%')
 		{
 			anc.cnt = write_then_count(anc.fmt, anc.i, anc.cnt, 1);
 			anc.fmt += anc.i + 1;

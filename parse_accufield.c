@@ -6,12 +6,13 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 10:24:31 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:40:31 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 char	*parse_accufield(char *str, char *flg)
 {
