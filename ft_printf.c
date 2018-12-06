@@ -117,13 +117,10 @@ int				ft_printf(const char *format, ...)
 			count += i;
 			format += i + 1;
 			i = 0;
-			while (format[i] && !ft_strchr("cspdiouxXf", format[i]))
+			while (format[i] && !ft_strchr("cspdiouxXf%", format[i]))
 				i++;
 			if (!format[i])
-			{
-				write(1, "error\n", 6);
-				return (0);
-			}
+				exit_error("error: invalid conversion\n", 0);
 			specs = ft_strsub(format, 0, i + 1);
 			format += i + 1;
 			arg = converter(specs, ap);
