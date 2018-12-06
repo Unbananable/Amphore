@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:56:09 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 15:36:01 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 19:52:48 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*conv_s(va_list ap, char *mod)
 			exit_error("error: malloc failed\n", 0);
 		return (res);
 	}
-	if(!(res = ft_strdup(res)))
+	if (!(res = ft_strdup(res)))
 		exit_error("error: malloc failed\n", 0);
 	return (res);
 }

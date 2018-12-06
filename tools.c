@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:54:00 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 17:42:00 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 19:54:04 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 
-int		move_right(char	*str, int nbchar, char c)
+int		move_right(char *str, int nbchar, char c)
 {
 	int		i;
-	
+
 	i = ft_strlen(str) - nbchar;
 	while (str[i] == ' ')
 		i++;
@@ -53,7 +53,7 @@ char	*suffix(char *suf, char *str)
 	if (init_sp + end_sp >= (int)ft_strlen(suf))
 	{
 		i = ft_strlen(suf) - 1;
-		while (--init_sp>= 0 && i >= 0)
+		while (--init_sp >= 0 && i >= 0)
 		{
 			str[init_sp] = suf[i];
 			i--;
@@ -76,4 +76,3 @@ char	*suffix(char *suf, char *str)
 	free(str);
 	return (ret);
 }
-
