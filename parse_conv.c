@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_conv.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/06 09:17:35 by anleclab          #+#    #+#             */
+/*   Updated: 2018/12/06 09:19:29 by anleclab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "libft/libft.h"
 #include <stdlib.h>
@@ -22,7 +34,7 @@ static t_conv	*initialize_conv_functions(void)
 	conv_list[1].f = &conv_s;
 	conv_list[2].f = &conv_p;
 	conv_list[3].f = &conv_d;
-	conv_list[4].f = &conv_i;
+	conv_list[4].f = &conv_d;
 	conv_list[5].f = &conv_o;
 	conv_list[6].f = &conv_u;
 	conv_list[7].f = &conv_x;
@@ -30,7 +42,7 @@ static t_conv	*initialize_conv_functions(void)
 	return (conv_list);
 }
 
-static char	*get_mod(char *specs)
+static char		*get_mod(char *specs)
 {
 	if (ft_strstr(specs, "hh"))
 		return (ft_strdup("hh"));
@@ -44,7 +56,7 @@ static char	*get_mod(char *specs)
 		return (ft_strdup(""));
 }
 
-char		*parse_conv(va_list ap, char* specs)
+char			*parse_conv(va_list ap, char *specs)
 {
 	char	*str;
 	int		i;

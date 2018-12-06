@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/05 18:15:59 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 09:16:16 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,27 @@
 char	*parse_accufield(char *str, char *flg)
 {
 	int		i;
-	int		j;
-	size_t	accu;
-	size_t	field;
 
-	i = -1;
-	accu = 0;
-	field = 0;
-	while(flg[++i])
+	i = 0;
+	len = 0;
+	while (flg[i] && flg[i] != '.')
+		i++;
+	if (flg[i] == '.')
 	{
-		if (flg[i] == '.')
-		{
-			accu = (size_t)ft_atoi(flg + (i + 1));
-			j = i + 1;
-			while (flg[j] <= '9' && flg[j] >= '0')
-				flg[j++] = '%';
-			str = accuracy(str, accu, flg[ft_strlen(flg) - 1]);
-		}
+		i++;
+		str = accuracy(str, (size_t)ft_atoi(flg + i), flg[ft_strlen(flg) - 1]);
+		while (flg[i] <= '9' && flg[i] >= '0')
+			flg[i++] = '%';
 	}
-	i = -1;
-	while (flg[++i])
+	i = 0;
+	while (flg[i] &&
+			!((i == 0 || flg[i - 1] != '.') && flg[i] > '0' && flg[i] <= '9'))
+		i++;
+	if (flg[i])
 	{
-		if ((i == 0 || flg[i - 1] != '.') && flg[i] > '0' && flg[i] <= '9')
-		{
-			field = (size_t)ft_atoi(flg + i);
-			j = i;
-			while (flg[j] >= '0' && flg[j] <= '9')
-				flg[j++] = '%';
-			str = field_width(str, field);
-		}
+		str = field_width(str, (size_t)ft_atoi(flg + i));
+		while (flg[i] >= '0' && flg[i] <= '9')
+			flg[i++] = '%';
 	}
 	return (str);
 }
