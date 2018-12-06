@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 11:23:24 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 12:15:35 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char			*conv_f(va_list ap, char *specs);
 char			*conv_c(va_list ap, char *mod);
 char			*conv_s(va_list ap, char *mod);
 char			*conv_p(va_list ap, char *mod);
-char			*conv_percentage(va_list *ap, char *mod);
+char			*conv_percentage(va_list ap, char *mod);
 char			*flag_plus(char *str, char c);
 char			*flag_minus(char *str, char c);
 char			*flag_space(char *str, char c);
