@@ -5,70 +5,118 @@
 
 #include <stdio.h>
 
-char		*converter(char *specs, va_list ap)
+static char	*converter(char *str, va_list ap)
 {
-	char	*str;
+	char	*res;
 
-	str = parse_conv(ap, specs);
-	str = parse_accufield(str, specs);
-	str = parse_flag(str, specs);
-	return(str);
+	res = parse_conv(ap, str);
+	res = parse_accufield(res, str);
+	res = parse_flag(res, str);
+	return(res);
 }
 
-int				ft_printf(const char *format, ...)
+static int	write_and_count(const char *ft, int cnt, int i, va_list ap)
+{
+	char	*str;
+	char	*arg;
+
+	if (!ap)
+	{
+		str = parse_color(ft + i);
+		write(1, ft, i);
+		cnt += i;
+		if (!ft_strequ(str, "\033[0m"))
+			write(1, str, 7);
+		else
+			write(1, str, 4);
+		str = NULL;
+	}
+	else
+	{
+		str = ft_strsub(ft, 0, i + 1);
+		arg = converter(str, ap);
+		write(1, arg, ft_strlen(arg));
+		cnt += ft_strlen(arg);
+		free(str);
+		free(arg);
+	}
+	return (cnt);
+}
+
+static int	write_then_count(const char *format, int i, int count, int mode)
+{
+	if (mode)
+	{
+		write(1, format, i);
+		count += i;
+		return (count);
+	}
+	else
+	{
+		write(1, format, ft_strlen(format));
+		count += ft_strlen(format);
+		return (count);
+	}
+}
+
+t_form		init_struct(t_form anc, const char *format)
+{
+	anc.i = 0;
+	anc.cnt = 0;
+	anc.fmt = format;
+	return (anc);
+}
+
+t_form		set_struct(t_form anc)
+{
+	char *str;
+
+	str = parse_color(anc.fmt + anc.i);
+	write(1, anc.fmt, anc.i);
+	anc.cnt += anc.i;
+	if (!ft_strequ(str, "\033[0m"))
+		write(1, str, 7);
+	else
+		write(1, str, 4);
+	str = NULL;
+	anc.fmt += param_len(anc.fmt + anc.i) + anc.i;
+	anc.i = 0;
+	return (anc);
+}
+
+int			ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	int			i;
-	char		*arg;
-	char		*specs;
-	int			count;
+	t_form		anc;
 
-	count = 0;
 	va_start(ap, format);
-	i = 0;
-	while (format[i])
+	anc = init_struct(anc, format);
+	while (anc.fmt[anc.i])
 	{
-		if (format[i] == '{')
+		if (anc.fmt[anc.i] == '{')
 		{
-			specs = parse_color(format + i);
-			if (specs)
-			{
-				write(1, format, i);
-				count += i;
-				if (!ft_strequ(specs, "\033[0m"))
-					write(1, specs, 7);
-				else
-					write(1, specs, 4);
-				format += param_len(format + i) + i;
-				i = 0;
-				specs = NULL;
-			}
+			if (parse_color(anc.fmt + anc.i))
+				anc = set_struct(anc);
 			else
-				i++;
+				anc.i++;
 		}
-		else if (format[i] == '%')
+		else if (anc.fmt[anc.i] == '%')
 		{
-			write(1, format, i);
-			count += i;
-			format += i + 1;
-			i = 0;
-			while (format[i] && !ft_strchr("cspdiouxXf%", format[i]))
-				i++;
-			if (!format[i])
+			anc.cnt = write_then_count(anc.fmt, anc.i, anc.cnt, 1);
+			anc.fmt += anc.i + 1;
+			anc.i = 0;
+			while (anc.fmt[anc.i] && !ft_strchr("cspdiouxXf%", anc.fmt[anc.i]))
+				anc.i++;
+			if (!anc.fmt[anc.i])
 				exit_error("error: invalid conversion\n", 0);
-			specs = ft_strsub(format, 0, i + 1);
-			format += i + 1;
-			arg = converter(specs, ap);
-			write(1, arg, ft_strlen(arg));
-			count += ft_strlen(arg);
-			free(specs);
-			i = 0;
+			anc.fmt += anc.i + 1;
+			anc.cnt = write_and_count(anc.fmt - anc.i - 1, anc.cnt, anc.i, ap);
+			anc.i = 0;
 		}
 		else
-			i++;
+			anc.i++;
 	}
-	write(1, format, ft_strlen(format));
-	count += ft_strlen(format);
+	anc.cnt = write_then_count(anc.fmt, anc.i, anc.cnt, 0);
 	va_end(ap);
-	return(count);
+	return(anc.cnt);
 }
