@@ -6,7 +6,7 @@
 #    By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 09:14:19 by dtrigalo          #+#    #+#              #
-#    Updated: 2018/12/06 11:23:22 by anleclab         ###   ########.fr        #
+#    Updated: 2018/12/06 11:42:24 by anleclab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,17 @@ SRCS = ft_printf.c					\
 OBJ = $(SRCS:.c=.o)
 HEADERS = ft_printf.h libft/libft.h
 
+
 all: $(NAME)
 
 %.o: %.c
 	gcc $(FLAGS) -o $@ -c $<
 
-$(NAME): $(OBJ)
+libft/libft.a:
 	make -C ./libft
-	ar rc $(NAME) $(OBJ)
+
+$(NAME): libft/libft.a $(OBJ)
+	ar rc $(NAME) $(OBJ) libft/*.o
 	ranlib $(NAME)
 
 clean:
