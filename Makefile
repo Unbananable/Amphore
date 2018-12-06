@@ -6,29 +6,22 @@
 #    By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 09:14:19 by dtrigalo          #+#    #+#              #
-#    Updated: 2018/12/05 18:11:09 by anleclab         ###   ########.fr        #
+#    Updated: 2018/12/06 10:22:04 by anleclab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 FLAGS = -Wall -Werror -Wextra
-SRCS = accufield_functions.c \
-	   conv_big_x.c \
-	   conv_c.c \
-	   conv_d.c \
-	   conv_i.c \
-	   conv_o.c \
-	   conv_p.c \
-	   conv_percentage.c \
-	   conv_s.c \
-	   conv_u.c \
-	   conv_x.c \
-	   flag_functions.c \
-	   ft_printf.c \
-	   parse_accufield.c \
-	   parse_conv.c \
-	   parse_flag.c \
-	   conv_f.c \
+SRCS = ft_printf.c					\
+	   parse_conv.c					\
+	   conv_functions_char.c		\
+	   conv_functions_int.c			\
+	   conv_functions_double.c		\
+	   conv_functions_percentage.c	\
+	   parse_accufield.c			\
+	   accufield_functions.c		\
+	   parse_flag.c					\
+	   flag_functions.c				\
 	   exit_error.c
 OBJ = $(SRCS:.c=.o)
 HEADERS = ft_printf.h

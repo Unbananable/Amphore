@@ -6,46 +6,38 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/05 17:39:32 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:22:52 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "libft/libft.h"
+#include "ft_printf.h"
 
-char	*flag_hash(char	*str, char c)
+char	*flag_hash(char *str, char c)
 {
 	char	*res;
 	int		i;
+	int		isx;
 
-	if (c != 'x' && c != 'X' && c != 'o')
+	if ((c != 'x' && c != 'X' && c != 'o') || (c == 'o' && str[0] == '0'))
 		return (str);
-	if (c == 'x' || c == 'X')
+	else if (c == 'o' && str[0] == ' ')
 	{
-		if (!(res = ft_strnew(ft_strlen(str) + 3)))
-			return (NULL);
-		res[0] = '0';
+		i = 0;
+		while (str[i] == ' ')
+			i++;
+		str[i - 1] = '0';
+		return (str);
+	}
+	isx = ((c == 'x' || c == 'X') ? 1 : 0);
+	if (!(res = ft_strnew(ft_strlen(str) + 2 + isx)))
+		exit_error("error: malloc failed\n", 1, str);
+	res[0] = '0';
+	if (isx)
 		res[1] = (c == 'x' ? 'x' : 'X');
-		ft_strncpy(res + 2, str, ft_strlen(str));	
-	}
-	else
-	{
-		if (str[0] == '0')
-			return (str);
-		if (str[0] == ' ')
-		{
-			i = 0;
-			while (str[i] == ' ')
-				i++;
-			str[i - 1] = '0';
-			return (str);
-		}
-		if (!(res = ft_strnew(ft_strlen(str) + 2)))
-			return (NULL);
-		res[0] = '0';
-		ft_strncpy(res + 1, str, ft_strlen(str));
-	}
+	ft_strncpy(res + 1 + isx, str, ft_strlen(str));
 	free(str);
 	return (res);
 }
@@ -59,7 +51,8 @@ char	*flag_space(char *str, char c)
 	if (c != 'd' && c != 'i' && c != 'f')
 		return (str);
 	i = 0;
-	while (str[i] && str[i] != '-' && str[i] != '+' && (str[i] < '0' || str[i] > '9'))
+	while (str[i] && str[i] != '-' && str[i] != '+'
+			&& (str[i] < '0' || str[i] > '9'))
 		str[i++] = ' ';
 	if (i != 0 || str[i] == '-' || str[i] == '+')
 		return (str);
@@ -72,7 +65,7 @@ char	*flag_space(char *str, char c)
 	return (res);
 }
 
-char	*flag_zero(char	*str, char c)
+char	*flag_zero(char *str, char c)
 {
 	int		i;
 	int		isneg;
@@ -97,12 +90,11 @@ char	*flag_zero(char	*str, char c)
 			isneg = 1;
 		str[i++] = '0';
 	}
-	if (isneg)
-		str[0] = '-';
+	str[0] = (isneg ? '-' : str[0]);
 	return (str);
 }
 
-char	*flag_plus(char	*str, char c)
+char	*flag_plus(char *str, char c)
 {
 	char	*str2;
 	int		i;
@@ -114,7 +106,7 @@ char	*flag_plus(char	*str, char c)
 		i++;
 	if (!i && str[i] != '-')
 	{
-		if(!(str2 = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2))))
+		if (!(str2 = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2))))
 			return (NULL);
 		str2[0] = '+';
 		ft_strncpy(str2 + 1, str, ft_strlen(str));

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_c.c                                           :+:      :+:    :+:   */
+/*   conv_functions_char.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 09:18:32 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 09:18:36 by anleclab         ###   ########.fr       */
+/*   Created: 2018/12/06 09:56:09 by anleclab          #+#    #+#             */
+/*   Updated: 2018/12/06 09:57:58 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-char		*conv_p(va_list ap, char *mod)
+char	*conv_p(va_list ap, char *mod)
 {
 	void	*str;
 	char	*res;

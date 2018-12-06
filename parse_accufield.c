@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 09:16:16 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:22:25 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*parse_accufield(char *str, char *flg)
 	int		i;
 
 	i = 0;
-	len = 0;
 	while (flg[i] && flg[i] != '.')
 		i++;
 	if (flg[i] == '.')
