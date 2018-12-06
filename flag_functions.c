@@ -5,140 +5,74 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 10:47:46 by anleclab         ###   ########.fr       */
+/*   Created: 2018/12/06 17:11:40 by anleclab          #+#    #+#             */
+/*   Updated: 2018/12/06 18:11:11 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-char	*flag_hash(char *str, char c)
+char	*flag_hash(char *str, char conv)
 {
-	char	*res;
-	int		i;
-	int		isx;
-
-	if ((c != 'x' && c != 'X' && c != 'o') || (c == 'o' && str[0] == '0'))
-		return (str);
-	else if (c == 'o' && str[0] == ' ')
-	{
-		i = 0;
-		while (str[i] == ' ')
-			i++;
-		str[i - 1] = '0';
-		return (str);
-	}
-	isx = ((c == 'x' || c == 'X') ? 1 : 0);
-	if (!(res = ft_strnew(ft_strlen(str) + 2 + isx)))
-		exit_error("error: malloc failed\n", 1, str);
-	res[0] = '0';
-	if (isx)
-		res[1] = (c == 'x' ? 'x' : 'X');
-	ft_strncpy(res + 1 + isx, str, ft_strlen(str));
-	free(str);
-	return (res);
-}
-
-char	*flag_space(char *str, char c)
-{
-	int		i;
-	char	*res;
-	int		hasendspace;
-
-	if (c != 'd' && c != 'i' && c != 'f')
-		return (str);
-	i = 0;
-	while (str[i] && str[i] != '-' && str[i] != '+'
-			&& (str[i] < '0' || str[i] > '9'))
-		str[i++] = ' ';
-	if (i != 0 || str[i] == '-' || str[i] == '+')
-		return (str);
-	hasendspace = (str[ft_strlen(str) - 1] == ' ' ? 1 : 0);
-	if (!(res = ft_strnew(ft_strlen(str) + 2 - hasendspace)))
-		exit_error("error: malloc failed\n", 1, str);
-	res[0] = ' ';
-	ft_strncpy(res + 1, str, ft_strlen(str) - hasendspace);
-	free(str);
-	return (res);
-}
-
-char	*flag_zero(char *str, char c)
-{
-	int		i;
-	int		isneg;
-
-	if (c == 'p')
-	{
-		i = 0;
-		while (str[i] && str[i] == ' ')
-		{
-			str[i] = (i == 1 ? 'x' : '0');
-			i++;
-		}
-		if (i)
-			str[i + 1] = '0';
-		return (str);
-	}
-	i = 0;
-	isneg = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '-'))
-	{
-		if (str[i] == '-')
-			isneg = 1;
-		str[i++] = '0';
-	}
-	str[0] = (isneg ? '-' : str[0]);
+	if (conv == 'o')
+		return (suffix("0", str));
+	if (conv == 'x' && ft_atoi(str))
+		return (suffix("0x", str));
+	if (conv == 'X' && ft_atoi(str))
+		return (suffix("0X", str));
 	return (str);
 }
 
-char	*flag_plus(char *str, char c)
+char	*flag_space(char *str, char conv)
 {
-	char	*str2;
-	int		i;
-
-	if (c != 'd' && c != 'i' && c != 'f')
-		return (str);
-	i = 0;
-	while ((str[i] < '0' || str[i] > '9') && str[i] != '-')
-		i++;
-	if (!i && str[i] != '-')
-	{
-		if (!(str2 = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2))))
-			exit_error("error: malloc failed\n", 1, str);
-		str2[0] = '+';
-		ft_strncpy(str2 + 1, str, ft_strlen(str));
-		str2[ft_strlen(str) + 1] = 0;
-		free(str);
-		return (str2);
-	}
-	if (i && str[i] != '-')
-		*(str + i - 1) = '+';
+	if ((conv == 'd' || conv == 'i' || conv == 'f') && str[0] != '-')
+		return (suffix(" ", str));
 	return (str);
 }
 
-char	*flag_minus(char *str, char c)
+char	*flag_plus(char *str, char conv)
+{
+	if ((conv == 'd' || conv == 'i' || conv == 'f') && !ft_strchr(str, '-'))
+		return (suffix("+", str));
+	return (str);
+}
+
+char	*flag_minus(char *str, char conv)
 {
 	int		i;
 	int		j;
-	int		space_nb;
-	char	*tmp;
 
-	c += 0;
-	i = -1;
+	conv += 0;
+	i = 0;
+	while (str[i] == ' ')
+		i++;
 	j = 0;
-	space_nb = 0;
+	while (str[i])
+		str[j++] = str[i++];
+	while (str[j])
+		str[j++] = ' ';
+	return (str);
+}
+
+char	*flag_zero(char *str, char conv)
+{
+	int		i;
+
+	if (conv == 'c' || conv == 's' || conv == 'p')
+		return (str);
+	i = -1;
 	while (str[++i] == ' ')
-		space_nb++;
-	tmp = str;
-	while (tmp[i])
+		str[i] = '0';
+	if (i && (str[i] == '-' || str[i] == '+'))
 	{
-		str[j++] = tmp[i++];
+		str[0] = (str[i] == '-' ? '-' : '+');
+		str[i] = '0';
 	}
-	while (str[i - space_nb])
+	if (str[i + 1] == 'x' || str[i + 1] == 'X')
 	{
-		str[i - space_nb--] = ' ';
+		str[1] = (str[i + 1] == 'x' ? 'x' : 'X');
+		str[i + 1] = '0';
 	}
 	return (str);
 }

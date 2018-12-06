@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 12:15:35 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 17:35:43 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ char			*flag_zero(char *str, char c);
 char			*accuracy(char *str, size_t len, char c);
 char			*field_width(char *str, size_t len);
 void			exit_error(char *er_mess, int nbfree, ...);
+int				move_right(char *str, int nbchar, char c);
+char			*suffix(char *suf, char *str);
 
 #endif

@@ -17,6 +17,9 @@ o Gerer les erreurs d'arguments (on n'a pas de crash mais a savoir si on laisse
 	  arguments" et affiche des trucs randoms
 	o arguments du mauvais type: printf met un warning "format specifies type
 	  '...' but the argument has type '...' et ne marche pas toujours
+o 42FC
+	o tests 28/29/30 : x ne fonctionne pas avec modificateur j (mais pas demande
+	  dans l'enonce)
 
 ================================== ELEGANZA ====================================
 o dans les parsers, ajouter un null a la fin pour enlever le nombre de fonction
@@ -27,6 +30,8 @@ x faire une fonction (error.c) a appeler pour mettre un message d'erreur
 x supprimer conv_i et utiliser conv_d a la place
 x mettre les conv dans un fichier
 o renommer les variables pour que le langage soit coherent partout
+o reprendre toutes les fonctions de flag pour les simplifier (essayer avec une
+  fonction suffixe)
 
 =================================== FINAL ======================================
 o leaks
