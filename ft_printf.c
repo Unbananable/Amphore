@@ -28,25 +28,25 @@ int				ft_printf(const char *format, ...)
 	i = 0;
 	while (format[i])
 	{
-		if (format[i] == '{')
-		{
-			specs = parse_color(format + i);
-			if (specs)
-			{
-				write(1, format, i);
-				count += i;
-				if (!ft_strequ(specs, "\033[0m"))
-					write(1, specs, 7);
-				else
-					write(1, specs, 4);
-				format += param_len(format + i) + i;
-				i = 0;
-				specs = NULL;
-			}
-			else
-				i++;
-		}
-		else if (format[i] == '%')
+//		if (format[i] == '{')
+//		{
+//			specs = parse_color(format + i);
+//			if (specs)
+//			{
+//				write(1, format, i);
+//				count += i;
+//				if (!ft_strequ(specs, "\033[0m"))
+//					write(1, specs, 7);
+//				else
+//					write(1, specs, 4);
+//				format += param_len(format + i) + i;
+//				i = 0;
+//				specs = NULL;
+//			}
+//			else
+//				i++;
+//		}
+		if (format[i] == '%')
 		{
 			write(1, format, i);
 			count += i;

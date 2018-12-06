@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:17:35 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 17:50:08 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:35:30 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 static t_conv	*initialize_conv_functions(void)
 {

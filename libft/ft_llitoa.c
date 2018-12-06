@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_llitoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 14:22:39 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 18:22:24 by anleclab         ###   ########.fr       */
+/*   Created: 2018/12/06 18:25:53 by anleclab          #+#    #+#             */
+/*   Updated: 2018/12/06 18:59:27 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	al_nbdigit(int n)
+static int	al_nbdigit(long long int n)
 {
 	int		res;
 
@@ -26,18 +26,12 @@ static int	al_nbdigit(int n)
 	return (res);
 }
 
-char		*ft_itoa(int n)
+char		*ft_llitoa(long long int n)
 {
 	char	*res;
 	int		i;
 	int		len;
 
-	if (n == -2147483648)
-	{
-		if (!(res = ft_strdup("-2147483648")))
-			return (NULL);
-		return (res);
-	}
 	len = (n < 0 ? al_nbdigit(n) + 1 : al_nbdigit(n));
 	n = (n < 0 ? -n : n);
 	if (!(res = ft_strnew(len)))

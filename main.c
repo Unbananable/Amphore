@@ -3,6 +3,6 @@
 
 int		main(void)
 {
-	ft_printf("\nft_printf: %#.0o\n", 0);
-	printf("   printf: %#.0o\n", 0);
+	ft_printf("\nft_printf: %03.2d\n", 0);
+	printf("   printf: %03.2d\n", 0);
 }

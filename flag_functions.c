@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 17:11:40 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 18:11:11 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:59:28 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,14 @@ char	*flag_zero(char *str, char conv)
 
 	if (conv == 'c' || conv == 's' || conv == 'p')
 		return (str);
+	if (conv == 'd' || conv == 'i')
+	{
+		i = 0;
+		while (str[i] == ' ')
+			i++;
+		if (str[i] == '0')
+			return (str);
+	}
 	i = -1;
 	while (str[++i] == ' ')
 		str[i] = '0';
