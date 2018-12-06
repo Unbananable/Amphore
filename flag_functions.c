@@ -6,12 +6,11 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:43:51 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 10:22:52 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:24:01 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "libft/libft.h"
 #include "ft_printf.h"
 

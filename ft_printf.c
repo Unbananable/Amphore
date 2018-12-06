@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <stdio.h>
-
 char			*converter(char *specs, va_list ap)
 {
 	char	*str;
