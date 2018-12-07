@@ -32,7 +32,13 @@ char		*ft_litoa(long int n)
 	char			*res;
 	int				i;
 	int				len;
-	
+
+	if (n == -9223372036854775808U)
+	{
+		if (!(res = ft_strdup("-9223372036854775808")))
+			return (NULL);
+		return (res);
+	}
 	len = (n < 0 ? al_nbdigit(n) + 1 : al_nbdigit(n));
 	n = (n < 0 ? -n : n);
 	if (!(res = ft_strnew(len)))

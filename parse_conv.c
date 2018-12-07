@@ -50,7 +50,7 @@ static char		*get_mod(char *specs)
 	if (ft_strstr(specs, "hh"))
 		return ("hh");
 	else if (ft_strstr(specs, "ll"))
-		return ("ll");
+		return ("l");
 	else if (ft_strchr(specs, 'h'))
 		return ("h");
 	else if (ft_strchr(specs, 'l'))
