@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 19:11:32 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/07 10:32:47 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ char			*field_width(char *str, size_t len);
 void			exit_error(char *er_mess, int nbfree, ...);
 int				move_right(char *str, int nbchar, char c);
 char			*suffix(char *suf, char *str);
+char			*parse_color(const char *format);
+int				param_len(const char *format);
 
 #endif

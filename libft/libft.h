@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:42:05 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 18:24:53 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/07 11:42:19 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			*ft_itoa(int n);
+char			*ft_litoa(long int n);
 char			*ft_llitoa(long long int n);
 char			*ft_stpcpy(char *dst, const char *src);
 char			*ft_stralloc(const char *str);

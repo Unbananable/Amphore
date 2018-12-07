@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:53:07 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 19:53:08 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/07 13:09:08 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 int		main(void)
 {
-	ft_printf("\nft_printf: %03.2d\n", 0);
-	printf("   printf: %03.2d\n", 0);
+	ft_printf("\nft_printf: %lld\n", 922337203);
+	printf("   printf: %lld\n", 922337203);
 }

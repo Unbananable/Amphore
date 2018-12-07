@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_llitoa.c                                        :+:      :+:    :+:   */
+/*   ft_litoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 18:25:53 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/07 13:09:06 by anleclab         ###   ########.fr       */
+/*   Created: 2018/12/07 11:43:38 by anleclab          #+#    #+#             */
+/*   Updated: 2018/12/07 12:13:18 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	al_nbdigit(long long int n)
+static int	al_nbdigit(long int n)
 {
-	int					res;
-	unsigned long long	tmp;
+	int				res;
+	unsigned long	tmp;
 
 	res = 1;
 	tmp = (n < 0 ? -n : n);
@@ -27,23 +27,22 @@ static int	al_nbdigit(long long int n)
 	return (res);
 }
 
-char		*ft_llitoa(long long int n)
+char		*ft_litoa(long int n)
 {
-	char				*res;
-	int					i;
-	int					len;
-	unsigned long long	tmp;
-
+	char			*res;
+	int				i;
+	int				len;
+	
 	len = (n < 0 ? al_nbdigit(n) + 1 : al_nbdigit(n));
-	tmp = (n < 0 ? (unsigned long long)n - 2 : (unsigned long long)n);
+	n = (n < 0 ? -n : n);
 	if (!(res = ft_strnew(len)))
 		return (NULL);
 	res[0] = (n == 0 ? '0' : '-');
 	i = len - 1;
-	while (tmp)
+	while (n)
 	{
-		res[i] = '0' + tmp % 10;
-		tmp /= 10;
+		res[i] = '0' + n % 10;
+		n /= 10;
 		i--;
 	}
 	return (res);

@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 18:40:31 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/07 11:06:44 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 char	*parse_accufield(char *str, char *flg)
 {
 	int		i;
+	int		iscnul;
 
+	iscnul = ((flg[ft_strlen(flg) - 1] == 'c' && ft_strstr(str, "^@")) ? 1 : 0);
 	i = 0;
 	while (flg[i] && flg[i] != '.')
 		i++;
@@ -34,7 +36,7 @@ char	*parse_accufield(char *str, char *flg)
 		i++;
 	if (flg[i])
 	{
-		str = field_width(str, (size_t)ft_atoi(flg + i));
+		str = field_width(str, (size_t)ft_atoi(flg + i) + iscnul);
 		while (flg[i] >= '0' && flg[i] <= '9')
 			flg[i++] = '%';
 	}
