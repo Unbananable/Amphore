@@ -14,7 +14,6 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 #include <stdarg.h>
-#include <stdio.h>
 
 static t_conv	*initialize_conv_functions(void)
 {

@@ -12,33 +12,34 @@
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-#include <stdio.h>
 
-char	*parse_accufield(char *str, char *flg)
+char	*parse_accufield(char *str, char *specs)
 {
 	int		i;
-	int		iscnul;
+	int		isnulc;
+	char	conv;
 
-	iscnul = ((flg[ft_strlen(flg) - 1] == 'c' && ft_strstr(str, "^@")) ? 1 : 0);
+	conv = specs[ft_strlen(specs) - 1];
+	isnulc = ((conv == 'c' && ft_strstr(str, "^@")) ? 1 : 0);
 	i = 0;
-	while (flg[i] && flg[i] != '.')
+	while (specs[i] && specs[i] != '.')
 		i++;
-	if (flg[i] == '.')
+	if (specs[i] == '.')
 	{
 		i++;
-		str = accuracy(str, (size_t)ft_atoi(flg + i), flg[ft_strlen(flg) - 1]);
-		while (flg[i] <= '9' && flg[i] >= '0')
-			flg[i++] = '%';
+		str = accuracy(str, (size_t)ft_atoi(specs + i), conv);
+		while (specs[i] <= '9' && specs[i] >= '0')
+			specs[i++] = '%';
 	}
 	i = 0;
-	while (flg[i] &&
-			!((i == 0 || flg[i - 1] != '.') && flg[i] > '0' && flg[i] <= '9'))
+	while (specs[i] &&
+			!((i == 0 || specs[i - 1] != '.') && specs[i] > '0' && specs[i] <= '9'))
 		i++;
-	if (flg[i])
+	if (specs[i])
 	{
-		str = field_width(str, (size_t)ft_atoi(flg + i) + iscnul);
-		while (flg[i] >= '0' && flg[i] <= '9')
-			flg[i++] = '%';
+		str = field_width(str, (size_t)ft_atoi(specs + i) + isnulc);
+		while (specs[i] >= '0' && specs[i] <= '9')
+			specs[i++] = '%';
 	}
 	return (str);
 }

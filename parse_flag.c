@@ -33,27 +33,27 @@ static t_flag	*initialise_flag(void)
 	return (flag);
 }
 
-char			*parse_flag(char *str, char *flg)
+char			*parse_flag(char *str, char *specs)
 {
 	int		i;
 	t_flag	*flag;
 
 	flag = initialise_flag();
 	i = -1;
-	if (ft_strchr(flg, '-'))
-		while (flg[++i])
-			if (flg[i] == '0')
-				flg[i] = '%';
+	if (ft_strchr(specs, '-'))
+		while (specs[++i])
+			if (specs[i] == '0')
+				specs[i] = '%';
 	i = -1;
-	if (ft_strchr(flg, '+'))
-		while (flg[++i])
-			if (flg[i] == ' ')
-				flg[i] = '%';
+	if (ft_strchr(specs, '+'))
+		while (specs[++i])
+			if (specs[i] == ' ')
+				specs[i] = '%';
 	i = 0;
 	while (i < 5)
 	{
-		if (ft_strchr(flg, flag[i].c))
-			str = flag[i].f(str, flg[ft_strlen(flg) - 1]);
+		if (ft_strchr(specs, flag[i].c))
+			str = flag[i].f(str, specs[ft_strlen(specs) - 1]);
 		i++;
 	}
 	return (str);

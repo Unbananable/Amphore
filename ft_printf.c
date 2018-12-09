@@ -15,19 +15,19 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static char		*converter(char *str, va_list ap)
+static char		*converter(char *specs, va_list ap)
 {
 	char	*res;
 	char	*res_nullchar;
 
-	res = parse_conv(ap, str);
-	res = parse_accufield(res, str);
-	res = parse_flag(res, str);
-	if (str[ft_strlen(str) - 1] == 'c' && ft_strstr(res, "^@"))
+	res = parse_conv(ap, specs);
+	res = parse_accufield(res, specs);
+	res = parse_flag(res, specs);
+	if (specs[ft_strlen(specs) - 1] == 'c' && ft_strstr(res, "^@"))
 	{
 		write(1, res, 1);
 		if(!(res_nullchar = ft_strdup(res + 1)))
-			exit_error("error: malloc failed\n", 2, res, str);
+			exit_error("error: malloc failed\n", 2, res, specs);
 		free(res);
 		return(res_nullchar);
 	}
@@ -44,26 +44,29 @@ static t_form	init_struct(const char *format)
 	return (anc);
 }
 
-static t_form	set_struct1(t_form anc)
+static t_form	write_color(t_form anc)
 {
-	char *str;
+	char *color;
 
-	str = parse_color(anc.fmt + anc.i);
-	write(1, anc.fmt, anc.i);
-	anc.cnt += anc.i;
-	if (!ft_strequ(str, "\033[0m"))
-		write(1, str, 7);
+	if ((color = parse_color(anc.fmt + anc.i)))
+	{
+		write(1, anc.fmt, anc.i);
+		anc.cnt += anc.i;
+		if (!ft_strequ(color, "\033[0m"))
+			write(1, color, 7);
+		else
+			write(1, color, 4);
+		anc.fmt += param_len(anc.fmt + anc.i) + anc.i;
+		anc.i = 0;
+	}
 	else
-		write(1, str, 4);
-	str = NULL;
-	anc.fmt += param_len(anc.fmt + anc.i) + anc.i;
-	anc.i = 0;
+		anc.i++;
 	return (anc);
 }
 
-static t_form	set_struct2(t_form anc, va_list ap)
+static t_form	write_arg(t_form anc, va_list ap)
 {
-	char	*str;
+	char	*specs;
 	char	*arg;
 
 	write(1, anc.fmt, anc.i);
@@ -74,13 +77,13 @@ static t_form	set_struct2(t_form anc, va_list ap)
 		anc.i++;
 	if (!anc.fmt[anc.i])
 		exit_error("error: invalid conversion\n", 0);
-	anc.fmt += anc.i + 1;
-	str = ft_strsub(anc.fmt - anc.i - 1, 0, anc.i + 1);
-	arg = converter(str, ap);
+	specs = ft_strsub(anc.fmt, 0, anc.i + 1);
+	arg = converter(specs, ap);
 	write(1, arg, ft_strlen(arg));
+	anc.fmt += anc.i + 1;
 	anc.cnt += ft_strlen(arg);
 	anc.i = 0;
-	free(str);
+	free(specs);
 	free(arg);
 	return (anc);
 }
@@ -95,14 +98,9 @@ int			ft_printf(const char *format, ...)
 	while (anc.fmt[anc.i])
 	{
 		if (anc.fmt[anc.i] == '{')
-		{
-			if (parse_color(anc.fmt + anc.i))
-				anc = set_struct1(anc);
-			else
-				anc.i++;
-		}
+			anc = write_color(anc);
 		else if (anc.fmt[anc.i] == '%')
-			anc = set_struct2(anc, ap);
+			anc = write_arg(anc, ap);
 		else
 			anc.i++;
 	}

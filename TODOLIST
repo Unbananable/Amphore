@@ -1,10 +1,10 @@
 =================================== TESTS ======================================
 o TEST ALL THE THINGS
-	x conv c
-	x conv s
-	x conv p
-	/ conv d (WITHOUT MODIFIERS)
-	/ conv o (WITHOUT MODIFIERS)
+	o conv c
+	o conv s
+	o conv p
+	o conv d
+	o conv o
 	o conv u
 	o conv x
 	o conv X
@@ -18,8 +18,6 @@ o Gerer les erreurs d'arguments (on n'a pas de crash mais a savoir si on laisse
 	o arguments du mauvais type: printf met un warning "format specifies type
 	  '...' but the argument has type '...' et ne marche pas toujours
 o 42FC
-	o tests 28/29/30 : x ne fonctionne pas avec modificateur j (mais pas demande
-	  dans l'enonce)
 
 ================================== ELEGANZA ====================================
 o dans les parsers, ajouter un null a la fin pour enlever le nombre de fonction

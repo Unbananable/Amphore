@@ -40,18 +40,18 @@ static char	*accuracy_s(char *str, size_t len)
 	return (ret);
 }
 
-char		*accuracy(char *str, size_t len, char c)
+char		*accuracy(char *str, size_t len, char conv)
 {
 	char	*ret;
 	int		isneg;
 
-	if (c == 'p' && len >= ft_strlen(str))
+	if (conv == 'p' && len >= ft_strlen(str))
 		return (accuracy_p(str, len));
-	if (c == 's')
+	if (conv == 's')
 		return (accuracy_s(str, len));
-	if ((c == 'x' || c == 'X' || c == 'd' || c == 'o') && len == 0 && ft_atoi(str) == 0)
+	if ((conv == 'x' || conv == 'X' || conv == 'd' || conv == 'o') && len == 0 && ft_atoi(str) == 0)
 		return (ft_strdup(""));
-	if (c != 'c' && c != 'p' && c != 'f' && ft_strlen(str) <= len)
+	if (conv != 'c' && conv != 'p' && conv != 'f' && ft_strlen(str) <= len)
 	{
 		isneg = (*str == '-' ? 1 : 0);
 		if (!(ret = (char *)malloc(sizeof(char) * (len + isneg + 1))))
