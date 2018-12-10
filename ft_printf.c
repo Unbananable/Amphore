@@ -73,7 +73,7 @@ static t_form	write_arg(t_form anc, va_list ap)
 	anc.cnt += anc.i;
 	anc.fmt += anc.i + 1;
 	anc.i = 0;
-	while (anc.fmt[anc.i] && !ft_strchr("cspdiouxXf%", anc.fmt[anc.i]))
+	while (anc.fmt[anc.i] && !ft_strchr("cspdiouxXfb%", anc.fmt[anc.i]))
 		anc.i++;
 	if (!anc.fmt[anc.i])
 		exit_error("error: invalid conversion\n", 0);

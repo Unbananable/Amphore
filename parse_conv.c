@@ -19,7 +19,7 @@ static t_conv	*initialize_conv_functions(void)
 {
 	t_conv	*conv_list;
 
-	if (!(conv_list = (t_conv *)malloc(sizeof(t_conv) * 10)))
+	if (!(conv_list = (t_conv *)malloc(sizeof(t_conv) * 11)))
 		exit_error("error: malloc failed\n", 0);
 	conv_list[0].conv = 'c';
 	conv_list[1].conv = 's';
@@ -30,7 +30,8 @@ static t_conv	*initialize_conv_functions(void)
 	conv_list[6].conv = 'u';
 	conv_list[7].conv = 'x';
 	conv_list[8].conv = 'X';
-	conv_list[9].conv = '%';
+	conv_list[10].conv = '%';
+	conv_list[9].conv = 'b';
 	conv_list[0].f = &conv_c;
 	conv_list[1].f = &conv_s;
 	conv_list[2].f = &conv_p;
@@ -40,7 +41,8 @@ static t_conv	*initialize_conv_functions(void)
 	conv_list[6].f = &conv_u;
 	conv_list[7].f = &conv_x;
 	conv_list[8].f = &conv_big_x;
-	conv_list[9].f = &conv_percentage;
+	conv_list[10].f = &conv_percentage;
+	conv_list[9].f = &conv_binary;
 	return (conv_list);
 }
 
@@ -77,11 +79,11 @@ char			*parse_conv(va_list ap, char *specs)
 	if (conv == 'f')
 		str = conv_f(ap, specs);
 	else
-		while (++i < 10)
+		while (++i < 11)
 			if (conv == conv_list[i].conv)
 			{
 				str = conv_list[i].f(ap, mod);
-				i = 10;
+				i = 11;
 			}
 	free(conv_list);
 	return (str);
