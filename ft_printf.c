@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:47:15 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/07 10:55:58 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/10 12:25:45 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 static char		*converter(char *specs, va_list ap)
 {
