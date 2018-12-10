@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:42:05 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/10 10:28:46 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:24:06 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 int				ft_putwchar(wchar_t c);
+unsigned char	*ft_wchar_to_bytes(wint_t c);
 
 void			*ft_memset(void *b, int c, size_t len);
 void			*ft_memcpy(void *dst, const void *src, size_t n);

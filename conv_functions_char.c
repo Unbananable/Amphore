@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:56:09 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/07 11:08:57 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:36:23 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,37 @@
 #include "ft_printf.h"
 #include <stdarg.h>
 #include <stdlib.h>
+#include <wchar.h>
 
-char	*conv_p(va_list ap, char *mod)
+static unsigned char	*conv_c_wchar(va_list ap)
+{
+	wint_t			c;
+	unsigned char	*res;
+
+	c = va_arg(ap, wint_t);
+	res = ft_wchar_to_bytes(c);
+	return (res);
+}
+
+static unsigned char	*conv_s_wchar(va_list ap)
+{
+	wchar_t			*arg;
+	unsigned char	*res;
+	int				i;
+
+	arg = va_arg(ap,  wchar_t *);
+	i = 0;
+	if (!(res = (unsigned char *)ft_strnew(1)))
+		exit_error("error: malloc failed\n", 0);
+	while (arg[i])
+	{
+		res = concatenate(res, ft_wchar_to_bytes(arg[i]));
+		i++;
+	}
+	return (res);
+}
+
+char					*conv_p(va_list ap, char *mod)
 {
 	void	*str;
 	char	*res;
@@ -32,37 +61,45 @@ char	*conv_p(va_list ap, char *mod)
 	return (res);
 }
 
-char	*conv_c(va_list ap, char *mod)
+char					*conv_c(va_list ap, char *mod)
 {
 	char			*res;
 	unsigned char	arg;
 
-	mod += 0;
-	if ((arg = (unsigned char)va_arg(ap, int)) == 0)
+	if (ft_strequ(mod, "l"))
+		res = (char *)conv_c_wchar(ap);
+	else
 	{
-		if (!(res = ft_strdup("^@")))
-			exit_error("error: malloc failed\n", 0);
-		return (res);
+		if ((arg = (unsigned char)va_arg(ap, int)) == 0)
+		{
+			if (!(res = ft_strdup("^@")))
+				exit_error("error: malloc failed\n", 0);
+			return (res);
+		}
+		if (!(res = ft_strnew(1)))
+			exit_error("error: malloc_failed\n", 0);
+		res[0] = arg;
 	}
-	if (!(res = ft_strnew(1)))
-		exit_error("error: malloc_failed\n", 0);
-	res[0] = arg;
 	return (res);
 }
 
-char	*conv_s(va_list ap, char *mod)
+char					*conv_s(va_list ap, char *mod)
 {
 	char	*res;
 
-	mod += 0;
-	res = (char *)va_arg(ap, const char *);
-	if (!res)
+	if (ft_strequ(mod, "l"))
+		res = (char *)conv_s_wchar(ap);
+	else
 	{
-		if (!(res = ft_strdup("(null)")))
+		res = (char *)va_arg(ap, const char *);
+		if (!res)
+		{
+			if (!(res = ft_strdup("(null)")))
+				exit_error("error: malloc failed\n", 0);
+			return (res);
+		}
+		if (!(res = ft_strdup(res)))
 			exit_error("error: malloc failed\n", 0);
-		return (res);
 	}
-	if (!(res = ft_strdup(res)))
-		exit_error("error: malloc failed\n", 0);
 	return (res);
 }

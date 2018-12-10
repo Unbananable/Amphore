@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:54:00 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 19:54:04 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:39:16 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,26 @@ char	*suffix(char *suf, char *str)
 	ft_strncat(ret, str + init_sp, ft_strlen(str) - init_sp - end_sp);
 	free(str);
 	return (ret);
+}
+
+unsigned char	*concatenate(unsigned char *s1, unsigned char *s2)
+{
+	unsigned char	*res;
+	int				len1;
+	int				len2;
+	int				i;
+
+	len1 = ft_strlen((char *)s1);
+	len2 = ft_strlen((char *)s2);
+	if (!(res = (unsigned char *)ft_strnew(len1 + len2 + 1)))
+		return (NULL);
+	i = -1;
+	while (++i < len1)
+		res[i] = s1[i];
+	i = -1;
+	while (++i < len2)
+		res[len1 + i] = s2[i];
+	free(s1);
+	free(s2);
+	return (res);
 }

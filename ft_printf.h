@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/07 10:32:47 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:30:19 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ int				move_right(char *str, int nbchar, char c);
 char			*suffix(char *suf, char *str);
 char			*parse_color(const char *format);
 int				param_len(const char *format);
+unsigned char	*concatenate(unsigned char *s1, unsigned char *s2);
 
 #endif
