@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/06 18:00:24 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/10 14:56:22 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,29 @@ static char	*accuracy_p(char *str, size_t len)
 
 static char	*accuracy_s(char *str, size_t len)
 {
-	char	*ret;
+	char			*ret;
+	int				i;
+	int				j;
+	unsigned char	byte;
 
 	if (!(ret = ft_strnew(len + 1)))
 		exit_error("error: malloc failed\n", 1, str);
 	ft_strncpy(ret, str, len);
+	i = 0;
+	while (i < (int)len)
+	{
+		j = 0;
+		byte = 128;
+		while (byte & ret[i])
+		{
+			byte = byte >> 1;
+			j++;
+		}
+		if (i + j > (int)len)
+			while (ret[i])
+				ret[i++] = 0;
+		i++;
+	}
 	free(str);
 	return (ret);
 }
