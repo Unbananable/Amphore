@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conv_functions_double.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/11 19:04:30 by anleclab          #+#    #+#             */
+/*   Updated: 2018/12/11 19:28:33 by anleclab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft/libft.h"
+#include "ft_printf.h"
+#include <stdlib.h>
 
 static char	*double_to_binary(double dbl)
 {
@@ -28,7 +42,7 @@ static int	binary_to_int(char *binary)
 	i = ft_strlen(binary);
 	while (--i >= 0)
 	{
-		res += str[i] * pow;
+		res += binary[i] * pow;
 		pow *= 2;
 	}
 	return (res);
@@ -37,8 +51,9 @@ static int	binary_to_int(char *binary)
 static char	*add_exp(char *mant, int exp)
 {
 	char	*res;
+	int		i;
 
-	if (exp =< 0)
+	if (exp <= 0)
 	{
 		if (!(res = ft_strnew(55 + exp)))
 			exit_error("error: malloc failed\n", 0);
@@ -72,8 +87,7 @@ static char	*add_exp(char *mant, int exp)
 static char	*add_str(char *str, int nb, int len)
 {
 	int		add;
-	int		rm;
-	char	temp;
+	char	*temp;
 
 	if (!nb)
 		return (str);
@@ -117,7 +131,8 @@ static char	*binary_to_arg(char *binary, int accu)
 	int		exp;
 	char	*mant;
 	int		i;
-	char	*res;
+	char	*integ;
+	char	*deci;
 
 	tmp = ft_strsub(binary, 1, 11);
 	exp = binary_to_int(tmp) - 1023;
@@ -127,17 +142,41 @@ static char	*binary_to_arg(char *binary, int accu)
 	i = 0;
 	while (mant[i] && mant[i] != '.')
 		i++;
-	mant[i] = 0;
-	res = binary_to_dec(mant);
-//recuperer la partie decimale
 	if (accu)
 	{
-		if (!(tmp = ft_strnew(ft_strlen(res) + 2 + accu)))
-			exit_error("error: malloc failed\n", 3, binary, mant, res);
-		ft_strncpy(tmp, res, ft_strlen(res));
-		tmp[ft_strlen(res)] = '.';
-//ajouter la partie decimale	
+		if (mant[i] == '.')
+			deci = binary_to_dec(mant + i + 1);
+		else
+			deci = ft_strdup("0");
+		if (!(tmp = ft_strnew(accu + 2)))
+			exit_error("error: malloc failed\n", 0);
+		tmp[0] = '.';
+		ft_strncpy(tmp + 1, deci, accu);
+		while (--accu >= (int)ft_strlen(deci))
+			tmp[accu - 1] = '0';
+		free(deci);
+		deci = tmp;
 	}
+	else
+		deci = ft_strdup("");
+	mant[i] = 0;
+	integ = (mant[0] == '-' ? binary_to_dec(mant + 1) : binary_to_dec(mant));
+	if (mant[0] == 1)
+	{	
+		if (!(tmp = ft_strnew(ft_strlen(integ) + 2)))
+			exit_error("error: malloc failed\n", 4, binary, mant, deci, integ);
+		tmp[0] = '-';
+		ft_strncpy(tmp + 1, integ, ft_strlen(integ));
+		free(integ);
+		integ = tmp;
+	}
+	if (!(tmp = ft_strnew(ft_strlen(integ) + ft_strlen(deci) + 1)))
+		exit_error("error: malloc failed\n", 4, binary, mant, deci, integ);
+	ft_strcpy(tmp, integ);
+	ft_strcat(tmp, deci);
+	free(integ);
+	free(deci);
+	return(tmp);
 }
 
 char		*conv_f(va_list ap, char *specs)
@@ -152,9 +191,10 @@ char		*conv_f(va_list ap, char *specs)
 	binary = double_to_binary(dbl);
 	accu = 6;
 	i = -1;
-	while (str[++i])
-		if (str[i] == '.')
-			accu = ft_atoi(str + i + 1);
+	while (specs[++i])
+		if (specs[i] == '.')
+			accu = ft_atoi(specs + i + 1);
 	arg = binary_to_arg(binary, accu);
+	free(binary);
 	return (arg);
 }
