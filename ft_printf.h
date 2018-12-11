@@ -36,6 +36,7 @@ typedef struct	s_form
 }				t_form;
 
 int				ft_printf(const char *format, ...);
+char			*conv_binary(va_list ap, char *mod);
 int				param_len(const char *format);
 char			*parse_color(const char *format);
 char			*parse_flag(char *str, char *flag);
