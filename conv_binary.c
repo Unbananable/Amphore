@@ -10,11 +10,15 @@ static char	*bytes_to_string(int x)
 	int		z;
 
 	z = 1073741824;
-	if (!(str = ft_strnew(32)))
+	if (!(str = ft_strnew(33)))
 		return (NULL);
+	if (x >= 0)
+		str[0] = '0';
+	else
+		str[0] = '1';
 	while (z > 0)
 	{
-		ft_strcat(str, ((x & z) == (z + 1) ? "1" : "0"));
+		ft_strcat(str, ((x & z) == z ? "1" : "0"));
 		z >>= 1;
 	}
 	return (str);
