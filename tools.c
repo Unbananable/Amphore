@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:54:00 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 16:07:40 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:26:52 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static char		*suffix_ret(char *suf, char *str, int init_sp, int end_sp)
 		i++;
 	}
 	ft_strcat(str, ret);
+	free(ret);
 	return (str);
 }
 

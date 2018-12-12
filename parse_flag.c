@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:28:38 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/06 18:50:01 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:02:40 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ char			*parse_flag(char *str, char *specs)
 			str = flag[i].f(str, specs[ft_strlen(specs) - 1]);
 		i++;
 	}
+	free(flag);
 	return (str);
 }

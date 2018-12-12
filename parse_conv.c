@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:17:35 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 09:56:54 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:01:07 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ static char		*get_mod(char *specs)
 		return ("j");
 	else if (ft_strchr(specs, 'z'))
 		return ("z");
-	else
-		return (ft_strdup(""));
+	return ("");
 }
 
 char			*parse_conv(va_list ap, char *specs)
