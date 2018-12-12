@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:57:10 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 13:41:02 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 19:02:14 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*conv_d(va_list ap, char *mod)
 	else if (ft_strequ(mod, "j"))
 		return (ft_llitoa(va_arg(ap, intmax_t)));
 	else if (ft_strequ(mod, "z"))
-		return (ft_llitoa(va_arg(ap, long long int)));
+		return (ft_llitoa(va_arg(ap, ssize_t)));
 	else if (*mod == 0)
 		res = va_arg(ap, int);
 	return (ft_itoa(res));
