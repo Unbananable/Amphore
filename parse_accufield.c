@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/12 11:40:27 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:44:55 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char		*parse_accufield(char *str, char *specs)
 	int		i;
 	int		isnulc;
 	char	conv;
+	int		accu;
 
 	conv = specs[ft_strlen(specs) - 1];
 	isnulc = ((conv == 'c' && ft_strstr(str, "^@")) ? 1 : 0);
@@ -39,14 +40,17 @@ char		*parse_accufield(char *str, char *specs)
 	if (specs[i] == '.')
 	{
 		i++;
-		str = accuracy(str, (size_t)ft_atoi(specs + i), conv);
+		accu = ft_atoi(specs + i);
+		accu = (accu < 0 ? 0 : accu);
+		str = accuracy(str, (size_t)accu, specs);
 		while (specs[i] <= '9' && specs[i] >= '0')
 			specs[i++] = '%';
 	}
 	i = specs_check(specs);
 	if (specs[i])
 	{
-		str = field_width(str, (size_t)ft_atoi(specs + i) + isnulc);
+		if (!(str = field_width(str, (size_t)ft_atoi(specs + i) + isnulc)))
+			exit_error("error: malloc failed\n", 1, str);
 		while (specs[i] >= '0' && specs[i] <= '9')
 			specs[i++] = '%';
 	}
