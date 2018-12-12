@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/12 11:54:45 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 15:14:47 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct	s_form
 }				t_form;
 
 int				ft_printf(const char *format, ...);
-char			*conv_binary(va_list ap, char *mod);
 int				param_len(const char *format);
 char			*parse_color(const char *format);
 char			*parse_flag(char *str, char *flag);
@@ -52,6 +51,7 @@ char			*conv_f(va_list ap, char *specs);
 char			*conv_c(va_list ap, char *mod);
 char			*conv_s(va_list ap, char *mod);
 char			*conv_p(va_list ap, char *mod);
+char			*conv_binary(va_list ap, char *mod);
 char			*conv_percentage(va_list ap, char *mod);
 char			*flag_plus(char *str, char c);
 char			*flag_minus(char *str, char c);
@@ -66,6 +66,5 @@ char			*suffix(char *suf, char *str);
 char			*parse_color(const char *format);
 int				param_len(const char *format);
 unsigned char	*concatenate(unsigned char *s1, unsigned char *s2);
-char			*conv_binary(va_list ap, char *mod);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:56:09 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/10 14:22:55 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:54:39 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static unsigned char	*conv_s_wchar(va_list ap)
 	unsigned char	*res;
 	int				i;
 
-	arg = va_arg(ap,  wchar_t *);
+	arg = va_arg(ap, wchar_t *);
 	i = 0;
 	if (!(res = (unsigned char *)ft_strnew(1)))
 		exit_error("error: malloc failed\n", 0);

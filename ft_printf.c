@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:47:15 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/10 12:25:45 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:43:18 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static char		*converter(char *specs, va_list ap)
 	if (specs[ft_strlen(specs) - 1] == 'c' && ft_strstr(res, "^@"))
 	{
 		write(1, res, 1);
-		if(!(res_nullchar = ft_strdup(res + 1)))
+		if (!(res_nullchar = ft_strdup(res + 1)))
 			exit_error("error: malloc failed\n", 2, res, specs);
 		free(res);
-		return(res_nullchar);
+		return (res_nullchar);
 	}
 	return (res);
 }
@@ -89,7 +89,7 @@ static t_form	write_arg(t_form anc, va_list ap)
 	return (anc);
 }
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	t_form		anc;

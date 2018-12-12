@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/10 14:56:22 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:56:47 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ char		*accuracy(char *str, size_t len, char conv)
 		return (accuracy_p(str, len));
 	if (conv == 's')
 		return (accuracy_s(str, len));
-	if ((conv == 'x' || conv == 'X' || conv == 'd' || conv == 'o') && len == 0 && ft_atoi(str) == 0)
+	if ((conv == 'x' || conv == 'X' || conv == 'd' || conv == 'o') &&
+			len == 0 && ft_atoi(str) == 0)
 		return (ft_strdup(""));
 	if (conv != 'c' && conv != 'p' && conv != 'f' && ft_strlen(str) <= len)
 	{
