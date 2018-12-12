@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 18:48:12 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 19:05:57 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,15 @@ char		*accuracy(char *str, size_t len, char *specs)
 {
 	char	*ret;
 	int		isneg;
-	char	conv;
 
-	conv = specs[ft_strlen(specs) - 1];
-	if (conv == 'p' && len >= ft_strlen(str))
-		ret = accuracy_p(str, len);
-	else if (conv == 's')
-		ret = accuracy_s(str, len);
-	else if ((conv == 'x' || conv == 'X' || conv == 'd' || conv == 'o') &&
-			len == 0 && ft_atoi(str) == 0)
+	if (ft_strchr("xXdo", specs[ft_strlen(specs) - 1]) && !len && !ft_atoi(str))
 		ret = ft_strdup("");
-	else if (conv != 'c' && conv != 'p' && conv != 'f' && ft_strlen(str) <= len)
+	else if (specs[ft_strlen(specs) - 1] == 'p' && len >= ft_strlen(str))
+		ret = accuracy_p(str, len);
+	else if (specs[ft_strlen(specs) - 1] == 's')
+		ret = accuracy_s(str, len);
+	else if (!ft_strchr("cpf", specs[ft_strlen(specs) - 1])
+			&& ft_strlen(str) <= len)
 	{
 		isneg = (*str == '-' ? 1 : 0);
 		if (!(ret = (char *)malloc(sizeof(char) * (len + isneg + 1))))
@@ -78,14 +76,11 @@ char		*accuracy(char *str, size_t len, char *specs)
 		ret[len + isneg] = 0;
 		ft_memset(ret, '0', len + 2 * isneg - ft_strlen(str));
 		ft_strncat(ret, str + isneg, ft_strlen(str) - isneg);
-		if (isneg)
-			*ret = '-';
+		*ret = (isneg ? '-' : *ret);
 	}
 	else
 		ret = ft_strdup(str);
 	free(str);
-	if (!ret)
-		exit_error("error: malloc failed\n", 1, specs);
 	return (ret);
 }
 
