@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:54:00 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 16:02:31 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:07:40 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int				move_right(char *str, int nbchar, char c)
 static char		*suffix_ret(char *suf, char *str, int init_sp, int end_sp)
 {
 	int		tmp;
-	int i;
+	int		i;
 	char	*ret;
 
 	tmp = ft_strlen(str);
