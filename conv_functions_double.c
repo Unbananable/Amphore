@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 10:46:45 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 16:10:04 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:46:31 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,15 @@ char		*conv_f(va_list ap, char *specs)
 	char	*res;
 	double	dbl;
 	char	*tmp;
+	int		isneg;
 
-	accu = 6;
 	i = 0;
 	while (specs[i] && specs[i] != '.')
 		i++;
-	accu = (specs[i] == '.') ? ft_atoi(specs + i + 1) : 6;
+	accu = (specs[i] == '.' ? ft_atoi(specs + i + 1) : 6);
 	dbl = va_arg(ap, double);
+	isneg = (dbl < 0 ? 1 : 0);
+	dbl = (dbl < 0 ? -dbl : dbl);
 	res = integ_part(&dbl);
 	if (accu)
 	{
@@ -105,6 +107,15 @@ char		*conv_f(va_list ap, char *specs)
 		res = tmp;
 		tmp = deci_part(dbl, accu);
 		res = concat(res, tmp);
+	}
+	if (isneg)
+	{
+		if (!(tmp = ft_strnew(ft_strlen(res) + 2)))
+			exit_error("error:malloc failed\n", 1, res);
+		tmp[0] = '-';
+		ft_strncpy(tmp + 1, res, ft_strlen(res));
+		free(res);
+		res = tmp;
 	}
 	return (res);
 }
