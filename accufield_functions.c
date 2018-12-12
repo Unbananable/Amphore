@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 11:56:47 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:52:42 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,9 @@ char		*field_width(char *str, size_t len)
 		ft_memset(ret, ' ', len);
 		i = ft_strlen(str);
 		while (--i >= 0)
+		{
 			ret[len-- - 1] = str[i];
+		}
 		free(str);
 		return (ret);
 	}
