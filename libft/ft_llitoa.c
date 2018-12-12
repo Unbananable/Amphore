@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:25:53 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/07 13:09:06 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:50:45 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char		*ft_llitoa(long long int n)
 	if (!(res = ft_strnew(len)))
 		return (NULL);
 	res[0] = (n == 0 ? '0' : '-');
+	if ((unsigned long)n == -9223372036854775808U)
+		return (ft_strdup("-9223372036854775808"));
 	i = len - 1;
 	while (n)
 	{

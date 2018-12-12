@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:54:00 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 11:34:57 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:07:40 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,25 @@ int				move_right(char *str, int nbchar, char c)
 static char		*suffix_ret(char *suf, char *str, int init_sp, int end_sp)
 {
 	int		tmp;
+	int		i;
 	char	*ret;
 
-	tmp = ft_strlen(str) + ft_strlen(suf) - init_sp - end_sp;
-	if (!(ret = ft_strnew(tmp + 1)))
+	tmp = ft_strlen(str);
+	if (!(ret = ft_strnew(tmp + ft_strlen(suf) - init_sp - end_sp)))
 		exit_error("error: malloc failed\n", 1, str);
 	ft_strncpy(ret, suf, ft_strlen(suf));
 	ft_strncat(ret, str + init_sp, ft_strlen(str) - init_sp - end_sp);
 	free(str);
-	return (ret);
+	if (!(str = ft_strnew(tmp)))
+		exit_error("error: malloc failed\n", 1, str);
+	i = 0;
+	while (i < init_sp - 1)
+	{
+		str[i] = ' ';
+		i++;
+	}
+	ft_strcat(str, ret);
+	return (str);
 }
 
 static char		*suffix_condition(char *suf, char *str, int init_sp, int end_sp)

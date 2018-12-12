@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 17:11:40 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 11:51:31 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 15:33:46 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ char	*flag_space(char *str, char conv)
 char	*flag_plus(char *str, char conv)
 {
 	if ((conv == 'd' || conv == 'i' || conv == 'f') && !ft_strchr(str, '-'))
+	{
 		return (suffix("+", str));
+	}
 	return (str);
 }
 
@@ -70,7 +72,9 @@ char	*flag_zero(char *str, char conv)
 	}
 	i = -1;
 	while (str[++i] == ' ')
+	{
 		str[i] = '0';
+	}
 	if (i && (str[i] == '-' || str[i] == '+'))
 	{
 		str[0] = (str[i] == '-' ? '-' : '+');
