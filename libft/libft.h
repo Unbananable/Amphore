@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:42:05 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/10 11:24:06 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:55:50 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,7 @@ void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstadd(t_list **alst, t_list *neww);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+
+double			ft_double_power(double n, int pow);
 
 #endif
