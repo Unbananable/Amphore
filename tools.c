@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:54:00 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 16:26:52 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 18:44:28 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,19 @@ static char		*suffix_ret(char *suf, char *str, int init_sp, int end_sp)
 	if (!(ret = ft_strnew(tmp + ft_strlen(suf) - init_sp - end_sp)))
 		exit_error("error: malloc failed\n", 1, str);
 	ft_strncpy(ret, suf, ft_strlen(suf));
-	ft_strncat(ret, str + init_sp, ft_strlen(str) - init_sp - end_sp);
+	ret = ft_strncat(ret, str + init_sp, ft_strlen(str) - init_sp - end_sp);
 	free(str);
 	if (!(str = ft_strnew(tmp)))
 		exit_error("error: malloc failed\n", 1, str);
 	i = 0;
+	if (ft_strlen(suf) == 2)
+		init_sp--;
 	while (i < init_sp - 1)
 	{
 		str[i] = ' ';
 		i++;
 	}
-	ft_strcat(str, ret);
+	str = ft_strcat(str, ret);
 	free(ret);
 	return (str);
 }
