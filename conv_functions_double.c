@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 10:46:45 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 17:14:36 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 18:47:28 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static char	*integ_part(double *dbl)
 	double	tmp;
 	char	*res;
 
+	*dbl = (*dbl < 0 ? -*dbl : *dbl);
 	tmp = *dbl;
 	pow_max = 0;
 	while (tmp > 10.0)
@@ -80,34 +81,35 @@ static char	*integ_part(double *dbl)
 	return (res);
 }
 
+static int	get_accuracy(char *specs)
+{
+	int		res;
+	int		i;
+
+	i = 0;
+	while (specs[i] && specs[i] != '.')
+		i++;
+	res = (specs[i] == '.' ? ft_atoi(specs + i + 1) : 6);
+	res = (res < 0 ? 0 : res);
+	return (res);
+}
+
 char		*conv_f(va_list ap, char *specs)
 {
 	int		accu;
-	int		i;
 	char	*res;
 	double	dbl;
 	char	*tmp;
 	int		isneg;
 
-	i = 0;
-	while (specs[i] && specs[i] != '.')
-		i++;
-	accu = (specs[i] == '.' ? ft_atoi(specs + i + 1) : 6);
-	accu = (accu < 0 ? 0 : accu);
+	accu = get_accuracy(specs);
 	dbl = va_arg(ap, double);
 	isneg = (dbl < 0 ? 1 : 0);
-	dbl = (dbl < 0 ? -dbl : dbl);
 	res = integ_part(&dbl);
 	if (accu)
 	{
-		if (!(tmp = ft_strnew(ft_strlen(res) + 2)))
-			exit_error("error: malloc failed\n", 0);
-		ft_strncpy(tmp, res, ft_strlen(res));
-		tmp[ft_strlen(res)] = '.';
-		free(res);
-		res = tmp;
-		tmp = deci_part(dbl, accu);
-		res = concat(res, tmp);
+		res = concat(res, ft_strdup("."));
+		res = concat(res, deci_part(dbl, accu));
 	}
 	if (isneg)
 	{

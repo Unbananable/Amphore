@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 17:44:27 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 18:58:42 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*accuracy_p(char *str, size_t len)
 	int		i;
 
 	if (!(ret = ft_strnew(len + 2)))
-		return(NULL);
+		return (NULL);
 	i = -1;
 	while (++i < (int)len + 4 - (int)ft_strlen(str))
 		ret[i] = (i == 1 ? 'x' : '0');
@@ -36,7 +36,7 @@ static char	*accuracy_s(char *str, size_t len)
 	unsigned char	byte;
 
 	if (!(ret = ft_strnew(len + 1)))
-		return(NULL);
+		return (NULL);
 	ft_strncpy(ret, str, len);
 	i = 0;
 	while (i < (int)len)
@@ -60,17 +60,15 @@ char		*accuracy(char *str, size_t len, char *specs)
 {
 	char	*ret;
 	int		isneg;
-	char	conv;
 
-	conv = specs[ft_strlen(specs) - 1];
-	if (conv == 'p' && len >= ft_strlen(str))
-		ret = accuracy_p(str, len);
-	else if (conv == 's')
-		ret = accuracy_s(str, len);
-	else if ((conv == 'x' || conv == 'X' || conv == 'd' || conv == 'o') &&
-			len == 0 && ft_atoi(str) == 0)
+	if (ft_strchr("xXdo", specs[ft_strlen(specs) - 1]) && !len && !ft_atoi(str))
 		ret = ft_strdup("");
-	else if (conv != 'c' && conv != 'p' && conv != 'f' && ft_strlen(str) <= len)
+	else if (specs[ft_strlen(specs) - 1] == 'p' && len >= ft_strlen(str))
+		ret = accuracy_p(str, len);
+	else if (specs[ft_strlen(specs) - 1] == 's')
+		ret = accuracy_s(str, len);
+	else if (!ft_strchr("cpf", specs[ft_strlen(specs) - 1])
+			&& ft_strlen(str) <= len)
 	{
 		isneg = (*str == '-' ? 1 : 0);
 		if (!(ret = (char *)malloc(sizeof(char) * (len + isneg + 1))))
@@ -78,14 +76,11 @@ char		*accuracy(char *str, size_t len, char *specs)
 		ret[len + isneg] = 0;
 		ft_memset(ret, '0', len + 2 * isneg - ft_strlen(str));
 		ft_strncat(ret, str + isneg, ft_strlen(str) - isneg);
-		if (isneg)
-			*ret = '-';
+		*ret = (isneg ? '-' : *ret);
 	}
 	else
 		ret = ft_strdup(str);
 	free(str);
-	if (!ret)
-		exit_error("error: malloc failed\n", 1, specs);
 	return (ret);
 }
 
