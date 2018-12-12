@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 10:46:45 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 16:15:09 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:46:31 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,13 @@ char		*conv_f(va_list ap, char *specs)
 	char	*tmp;
 	int		isneg;
 
-	isneg = (dbl < 0 ? 1 : 0);
-	dbl = (dbl < 0 ? -dbl : dbl);
-	accu = 6;
 	i = 0;
 	while (specs[i] && specs[i] != '.')
 		i++;
-	accu = (specs[i] == '.') ? ft_atoi(specs + i + 1) : 6;
+	accu = (specs[i] == '.' ? ft_atoi(specs + i + 1) : 6);
 	dbl = va_arg(ap, double);
+	isneg = (dbl < 0 ? 1 : 0);
+	dbl = (dbl < 0 ? -dbl : dbl);
 	res = integ_part(&dbl);
 	if (accu)
 	{

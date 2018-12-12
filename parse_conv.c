@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:17:35 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 09:56:54 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:53:35 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ char			*parse_conv(va_list ap, char *specs)
 	conv = specs[ft_strlen(specs) - 1];
 	conv_list = initialize_conv_functions();
 	i = -1;
-//	if (conv == 'f')
-//		str = conv_f(ap, specs);
-//	else
+	if (conv == 'f')
+		str = conv_f(ap, specs);
+	else
 		while (++i < 11)
 			if (conv == conv_list[i].conv)
 			{
