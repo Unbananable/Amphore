@@ -6,14 +6,26 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/07 11:06:44 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:40:27 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-char	*parse_accufield(char *str, char *specs)
+static int	specs_check(char *specs)
+{
+	int		i;
+
+	i = 0;
+	while (specs[i] &&
+			!((i == 0 || specs[i - 1] != '.') &&
+				specs[i] > '0' && specs[i] <= '9'))
+		i++;
+	return (i);
+}
+
+char		*parse_accufield(char *str, char *specs)
 {
 	int		i;
 	int		isnulc;
@@ -31,10 +43,7 @@ char	*parse_accufield(char *str, char *specs)
 		while (specs[i] <= '9' && specs[i] >= '0')
 			specs[i++] = '%';
 	}
-	i = 0;
-	while (specs[i] &&
-			!((i == 0 || specs[i - 1] != '.') && specs[i] > '0' && specs[i] <= '9'))
-		i++;
+	i = specs_check(specs);
 	if (specs[i])
 	{
 		str = field_width(str, (size_t)ft_atoi(specs + i) + isnulc);

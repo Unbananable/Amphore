@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conv_functions_binary.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/12 11:53:33 by dtrigalo          #+#    #+#             */
+/*   Updated: 2018/12/12 11:53:35 by dtrigalo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft/libft.h"
 #include "ft_printf.h"
 #include <stdlib.h>
@@ -32,7 +44,7 @@ static char	*bytes_to_string(long int x)
 	return (str);
 }
 
-char	*conv_binary(va_list ap, char *mod)
+char		*conv_binary(va_list ap, char *mod)
 {
 	char	*res;
 

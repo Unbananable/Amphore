@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 14:54:00 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/10 11:39:16 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:34:57 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 
-int		move_right(char *str, int nbchar, char c)
+int				move_right(char *str, int nbchar, char c)
 {
 	int		i;
 
@@ -37,19 +37,24 @@ int		move_right(char *str, int nbchar, char c)
 	return (1);
 }
 
-char	*suffix(char *suf, char *str)
+static char		*suffix_ret(char *suf, char *str, int init_sp, int end_sp)
 {
+	int		tmp;
 	char	*ret;
-	int		init_sp;
-	int		end_sp;
+
+	tmp = ft_strlen(str) + ft_strlen(suf) - init_sp - end_sp;
+	if (!(ret = ft_strnew(tmp + 1)))
+		exit_error("error: malloc failed\n", 1, str);
+	ft_strncpy(ret, suf, ft_strlen(suf));
+	ft_strncat(ret, str + init_sp, ft_strlen(str) - init_sp - end_sp);
+	free(str);
+	return (ret);
+}
+
+static char		*suffix_condition(char *suf, char *str, int init_sp, int end_sp)
+{
 	int		i;
 
-	init_sp = 0;
-	while (str[init_sp] == ' ')
-		init_sp++;
-	end_sp = 0;
-	while (str[ft_strlen(str) - 1 - end_sp] == ' ')
-		end_sp++;
 	if (init_sp + end_sp >= (int)ft_strlen(suf))
 	{
 		i = ft_strlen(suf) - 1;
@@ -69,12 +74,23 @@ char	*suffix(char *suf, char *str)
 		}
 		return (str);
 	}
-	if (!(ret = ft_strnew(ft_strlen(str) + ft_strlen(suf) - init_sp - end_sp + 1)))
-		exit_error("error: malloc failed\n", 1, str);
-	ft_strncpy(ret, suf, ft_strlen(suf));
-	ft_strncat(ret, str + init_sp, ft_strlen(str) - init_sp - end_sp);
-	free(str);
-	return (ret);
+	return (NULL);
+}
+
+char			*suffix(char *suf, char *str)
+{
+	int		init_sp;
+	int		end_sp;
+
+	init_sp = 0;
+	while (str[init_sp] == ' ')
+		init_sp++;
+	end_sp = 0;
+	while (str[ft_strlen(str) - 1 - end_sp] == ' ')
+		end_sp++;
+	if (suffix_condition(suf, str, init_sp, end_sp))
+		str = suffix_condition(suf, str, init_sp, end_sp);
+	return (suffix_ret(suf, str, init_sp, end_sp));
 }
 
 unsigned char	*concatenate(unsigned char *s1, unsigned char *s2)
