@@ -6,13 +6,14 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 19:05:57 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:22:13 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static char	*accuracy_p(char *str, size_t len)
 {
@@ -25,7 +26,7 @@ static char	*accuracy_p(char *str, size_t len)
 	while (++i < (int)len + 4 - (int)ft_strlen(str))
 		ret[i] = (i == 1 ? 'x' : '0');
 	ft_strncpy(ret + i, str + 2, ft_strlen(str) - 2);
-	return (str);
+	return (ret);
 }
 
 static char	*accuracy_s(char *str, size_t len)
@@ -60,8 +61,15 @@ char		*accuracy(char *str, size_t len, char *specs)
 {
 	char	*ret;
 	int		isneg;
+	int		iszero;
+	int		i;
 
-	if (ft_strchr("xXdo", specs[ft_strlen(specs) - 1]) && !len && !ft_atoi(str))
+	iszero = 1;
+	i = -1;
+	while (str[++i] && iszero)
+		if (str[i] != '0' && str[i] != ' ')
+			iszero = 0;
+	if (ft_strchr("xXdo", specs[ft_strlen(specs) - 1]) && !len && iszero)
 		ret = ft_strdup("");
 	else if (specs[ft_strlen(specs) - 1] == 'p' && len >= ft_strlen(str))
 		ret = accuracy_p(str, len);

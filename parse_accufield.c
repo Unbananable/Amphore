@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/12 18:55:54 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:07:50 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char		*parse_accufield(char *str, char *specs)
 		if (!(str = accuracy(str, (size_t)accu, specs)))
 			exit_error("error: malloc failed\n", 1, specs);
 		while (specs[i] <= '9' && specs[i] >= '0')
-			specs[i++] = '%';
+		specs[i++] = '%';
 	}
 	i = specs_check(specs);
 	if (specs[i])
