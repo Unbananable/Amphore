@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/13 17:22:13 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/21 15:01:18 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,24 @@ static char	*accuracy_s(char *str, size_t len)
 	return (ret);
 }
 
-char		*accuracy(char *str, size_t len, char *specs)
+char		*accuracy_reg(char *str, size_t len)
 {
 	char	*ret;
 	int		isneg;
+
+	isneg = (*str == '-' ? 1 : 0);
+	if (!(ret = (char *)malloc(sizeof(char) * (len + isneg + 1))))
+		exit_error("error: malloc failed\n", 1, str);
+	ret[len + isneg] = 0;
+	ft_memset(ret, '0', len + 2 * isneg - ft_strlen(str));
+	ft_strncat(ret, str + isneg, ft_strlen(str) - isneg);
+	*ret = (isneg ? '-' : *ret);
+	return (ret);
+}
+
+char		*accuracy(char *str, size_t len, char *specs)
+{
+	char	*ret;
 	int		iszero;
 	int		i;
 
@@ -77,15 +91,7 @@ char		*accuracy(char *str, size_t len, char *specs)
 		ret = accuracy_s(str, len);
 	else if (!ft_strchr("cpf", specs[ft_strlen(specs) - 1])
 			&& ft_strlen(str) <= len)
-	{
-		isneg = (*str == '-' ? 1 : 0);
-		if (!(ret = (char *)malloc(sizeof(char) * (len + isneg + 1))))
-			exit_error("error: malloc failed\n", 2, str, specs);
-		ret[len + isneg] = 0;
-		ft_memset(ret, '0', len + 2 * isneg - ft_strlen(str));
-		ft_strncat(ret, str + isneg, ft_strlen(str) - isneg);
-		*ret = (isneg ? '-' : *ret);
-	}
+		ret = accuracy_reg(str, len);
 	else
 		ret = ft_strdup(str);
 	free(str);
