@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 18:47:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/13 16:05:51 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/21 15:18:45 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,17 @@
 static t_conv	*initialize_conv_functions(void)
 {
 	t_conv	*conv_list;
+	char	*conv_letters;
+	int		i;
 
 	if (!(conv_list = (t_conv *)malloc(sizeof(t_conv) * 11)))
 		exit_error("error: malloc failed\n", 0);
-	conv_list[0].conv = 'c';
-	conv_list[1].conv = 's';
-	conv_list[2].conv = 'p';
-	conv_list[3].conv = 'd';
-	conv_list[4].conv = 'i';
-	conv_list[5].conv = 'o';
-	conv_list[6].conv = 'u';
-	conv_list[7].conv = 'x';
-	conv_list[8].conv = 'X';
-	conv_list[10].conv = '%';
-	conv_list[9].conv = 'b';
+	if (!(conv_letters = ft_strdup("cspdiouxXb%")))
+		exit_error("error: malloc failed\n", 1, conv_list);
+	i = -1;
+	while (++i < 11)
+		conv_list[i].conv = conv_letters[i];
+	free(conv_letters);
 	conv_list[0].f = &conv_c;
 	conv_list[1].f = &conv_s;
 	conv_list[2].f = &conv_p;
