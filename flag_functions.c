@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 17:11:40 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/21 15:03:55 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/21 18:02:41 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,17 @@ char	*flag_hash(char *str, char conv)
 
 char	*flag_space(char *str, char conv)
 {
-	if ((conv == 'd' || conv == 'i' || conv == 'f') && str[0] != '-')
-		return (suffix(" ", str));
+	char	*res;
+	int		i;
+
+	i = -1;
+	while (str[++i] == ' ')
+		;
+	if ((conv == 'd' || conv == 'i' || conv == 'f') && str[i] != '-')
+	{
+		res = suffix("\t", str);
+		return (res);
+	}
 	return (str);
 }
 
@@ -63,16 +72,21 @@ char	*flag_zero(char *str, char conv)
 
 	if (conv == 'c' || conv == 's' || conv == 'p')
 		return (str);
-	if (!(i = 0) && (conv == 'd' || conv == 'i'))
+/*	if (!(i = 0) && (conv == 'd' || conv == 'i'))
 	{
 		while (str[i] == ' ')
 			i++;
 		if (str[i] == '0')
 			return (str);
-	}
+	}*/
 	i = -1;
 	while (str[++i] == ' ')
 		str[i] = '0';
+	if (str[i] == '\t')
+	{
+		str[i++] = '0';
+		str[0] = '\t';
+	}
 	if (i && (str[i] == '-' || str[i] == '+'))
 	{
 		str[0] = (str[i] == '-' ? '-' : '+');

@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:47:15 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/21 15:55:43 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/21 17:24:45 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static char		*converter(char *specs, va_list ap)
 {
 	char	*res;
 	char	*res_nullchar;
+	int		i;
 
+	if (specs[ft_strlen(specs) - 1] == 'i')
+		specs[ft_strlen(specs) - 1] = 'd';
 	res = parse_conv(ap, specs);
 	res = parse_accufield(res, specs);
 	res = parse_flag(res, specs);
@@ -32,6 +35,10 @@ static char		*converter(char *specs, va_list ap)
 		free(res);
 		return (res_nullchar);
 	}
+	if (ft_strchr("dfi", specs[ft_strlen(specs) - 1]) && (i = -1))
+		while (res[++i])
+			if (res[i] == '\t')
+				res[i] = ' ';
 	return (res);
 }
 
@@ -74,10 +81,10 @@ static t_form	write_arg(t_form anc, va_list ap)
 	anc.cnt += anc.i;
 	anc.fmt += anc.i + 1;
 	anc.i = 0;
-	while (anc.fmt[anc.i] && (ft_strchr(" +-jhlz", anc.fmt[anc.i])
+	while (anc.fmt[anc.i] && (ft_strchr(" #+-.jhlz", anc.fmt[anc.i])
 			|| (anc.fmt[anc.i] >= '0' && anc.fmt[anc.i] <= '9')))
 		anc.i++;
-	if (!ft_strchr("cspdiouxXf", anc.fmt[anc.i]))
+	if (!ft_strchr("cspdiouxXf%", anc.fmt[anc.i]))
 		anc.fmt += anc.i;
 	else
 	{

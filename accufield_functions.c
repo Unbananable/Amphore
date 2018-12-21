@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/21 15:01:18 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/21 17:15:19 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ char		*accuracy_reg(char *str, size_t len)
 	int		isneg;
 
 	isneg = (*str == '-' ? 1 : 0);
-	if (!(ret = (char *)malloc(sizeof(char) * (len + isneg + 1))))
+	if (!(ret = ft_strnew(len + isneg + 1)))
 		exit_error("error: malloc failed\n", 1, str);
-	ret[len + isneg] = 0;
-	ft_memset(ret, '0', len + 2 * isneg - ft_strlen(str));
-	ft_strncat(ret, str + isneg, ft_strlen(str) - isneg);
+	ft_memset(ret, '0', len + isneg);
+	ft_strncpy(ret + len + 2 * isneg - ft_strlen(str), str +
+			isneg, ft_strlen(str) - isneg);
 	*ret = (isneg ? '-' : *ret);
 	return (ret);
 }
@@ -111,9 +111,7 @@ char		*field_width(char *str, size_t len)
 		ft_memset(ret, ' ', len);
 		i = ft_strlen(str);
 		while (--i >= 0)
-		{
 			ret[len-- - 1] = str[i];
-		}
 		free(str);
 		return (ret);
 	}

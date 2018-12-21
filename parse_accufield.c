@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/21 15:14:06 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/21 17:50:16 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,21 @@ static int	specs_check(char *specs)
 	return (i);
 }
 
-static char	*remove_accufield(char *specs)
+static char	*remove_accufield(char *specs, int accu)
 {
 	int		i;
 
 	i = -1;
 	while (specs[++i])
-		if (specs[i] >= '0' && specs[i] <= '9' && !(specs[i] == '0'
-				&& (i == 0 || specs[i - 1] < '0' || specs[i - 1] > '9')))
+	{
+		if ((specs[i] > '0' && specs[i] <= '9') ||
+				(i && specs[i] == '0' && specs[i - 1] == '%'))
+			specs[i] = '%';
+}
+	i = -1;
+	while (accu && ft_strchr("diouxX", specs[ft_strlen(specs) - 1])
+			&& specs[++i])
+		if (specs[i] == '0')
 			specs[i] = '%';
 	return (specs);
 }
@@ -47,6 +54,7 @@ char		*parse_accufield(char *str, char *specs)
 	conv = specs[ft_strlen(specs) - 1];
 	isnulc = ((conv == 'c' && ft_strstr(str, "^@")) ? 1 : 0);
 	i = 0;
+	accu = 0;
 	while (specs[i] && specs[i] != '.')
 		i++;
 	if (specs[i] == '.')
@@ -61,6 +69,6 @@ char		*parse_accufield(char *str, char *specs)
 	if (specs[i])
 		if (!(str = field_width(str, (size_t)ft_atoi(specs + i) + isnulc)))
 			exit_error("error: malloc failed\n", 2, str, specs);
-	specs = remove_accufield(specs);
+	specs = remove_accufield(specs, accu);
 	return (str);
 }
