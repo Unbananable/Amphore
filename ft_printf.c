@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:47:15 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/13 16:05:15 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/21 15:55:43 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,22 @@ static t_form	write_arg(t_form anc, va_list ap)
 	anc.cnt += anc.i;
 	anc.fmt += anc.i + 1;
 	anc.i = 0;
-	while (anc.fmt[anc.i] && !ft_strchr("cspdiouxXfb%", anc.fmt[anc.i]))
+	while (anc.fmt[anc.i] && (ft_strchr(" +-jhlz", anc.fmt[anc.i])
+			|| (anc.fmt[anc.i] >= '0' && anc.fmt[anc.i] <= '9')))
 		anc.i++;
-	if (!anc.fmt[anc.i])
-		exit_error("error: invalid conversion\n", 0);
-	specs = ft_strsub(anc.fmt, 0, anc.i + 1);
-	arg = converter(specs, ap);
-	write(1, arg, ft_strlen(arg));
-	anc.fmt += anc.i + 1;
-	anc.cnt += ft_strlen(arg);
+	if (!ft_strchr("cspdiouxXf", anc.fmt[anc.i]))
+		anc.fmt += anc.i;
+	else
+	{
+		specs = ft_strsub(anc.fmt, 0, anc.i + 1);
+		arg = converter(specs, ap);
+		write(1, arg, ft_strlen(arg));
+		anc.fmt += anc.i + 1;
+		anc.cnt += ft_strlen(arg);
+		free(specs);
+		free(arg);
+	}
 	anc.i = 0;
-	free(specs);
-	free(arg);
 	return (anc);
 }
 
