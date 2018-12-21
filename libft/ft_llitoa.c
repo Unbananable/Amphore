@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:25:53 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/12 13:50:45 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/21 15:52:20 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static int	al_nbdigit(long long int n)
 char		*ft_llitoa(long long int n)
 {
 	char				*res;
-	int					i;
-	int					len;
+	long long int		i;
+	long long int		len;
 
 	len = (n < 0 ? al_nbdigit(n) + 1 : al_nbdigit(n));
 	if (!(res = ft_strnew(len)))
@@ -40,6 +40,8 @@ char		*ft_llitoa(long long int n)
 	if ((unsigned long)n == -9223372036854775808U)
 		return (ft_strdup("-9223372036854775808"));
 	i = len - 1;
+	if (n < 0)
+		n = -n;
 	while (n)
 	{
 		res[i] = '0' + n % 10;
