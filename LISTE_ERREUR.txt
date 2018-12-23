@@ -21,12 +21,6 @@
 
 N.B.: Pour les problèmes de précision, j'ai mis quelques exemples pour illustrer mais de nombreux cas sont faux !
 
-[case: #194]["b'%.01s\\n', b''"] -> [printf/ft_printf][1/2][b'\n'/b' \n'].
-[case: #210]["b'%.02s\\n', b''"] -> [printf/ft_printf][1/3][b'\n'/b'  \n'].
-[case: #274]["b'%.11s\\n', b''"] -> [printf/ft_printf][1/2][b'\n'/b' \n'].
-[case: #690]["b'% .02s\\n', b''"] -> [printf/ft_printf][1/3][b'\n'/b'  \n'].
-(Same with +, ' ', -, etc ==> probleme principal sur le point quelque chose 's')
-
 [case: #3390]["b'%0.p\\n', 0"] -> [printf/ft_printf][3/4][b'0x\n'/b'0x0\n'].
 [case: #2802]["b'%-0.2p\\n', 0"] -> [printf/ft_printf][5/4][b'0x00\n'/b'0x0\n'].
 [case: #8094]["b'% #2.p\\n', 0"] -> [printf/ft_printf][3/4][b'0x\n'/b'0x0\n'].

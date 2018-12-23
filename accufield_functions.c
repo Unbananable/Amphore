@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/21 17:15:19 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 13:14:05 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static char	*accuracy_s(char *str, size_t len)
 	int				j;
 	unsigned char	byte;
 
+	if (!str[0])
+		return (ft_strdup(""));
 	if (!(ret = ft_strnew(len + 1)))
 		return (NULL);
 	ft_strncpy(ret, str, len);
@@ -88,7 +90,9 @@ char		*accuracy(char *str, size_t len, char *specs)
 	else if (specs[ft_strlen(specs) - 1] == 'p' && len >= ft_strlen(str))
 		ret = accuracy_p(str, len);
 	else if (specs[ft_strlen(specs) - 1] == 's')
+{
 		ret = accuracy_s(str, len);
+}
 	else if (!ft_strchr("cpf", specs[ft_strlen(specs) - 1])
 			&& ft_strlen(str) <= len)
 		ret = accuracy_reg(str, len);
