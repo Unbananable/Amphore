@@ -6,7 +6,7 @@
 #    By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/28 09:14:19 by dtrigalo          #+#    #+#              #
-#    Updated: 2018/12/11 15:18:27 by anleclab         ###   ########.fr        #
+#    Updated: 2018/12/23 16:36:44 by anleclab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = ft_printf.c					\
 	   conv_functions_char.c		\
 	   conv_functions_int.c			\
 	   conv_functions_double.c		\
+	   conv_functions_longdouble.c	\
 	   conv_functions_percentage.c	\
 	   conv_functions_binary.c		\
 	   parse_accufield.c			\

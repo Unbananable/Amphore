@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:47:15 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 16:14:06 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 16:51:49 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char		*converter(char *specs, va_list ap)
 	if (specs[ft_strlen(specs) - 1] == 'i')
 		specs[ft_strlen(specs) - 1] = 'd';
 	if (!specs[0]
-			|| ft_strchr(" .lhzj+-0123456789#", specs[ft_strlen(specs) - 1]))
+			|| ft_strchr(" .lhzj+-0123456789#L", specs[ft_strlen(specs) - 1]))
 		return (ft_strdup(""));
 	res = parse_conv(ap, specs);
 	res = parse_accufield(res, specs);
@@ -84,14 +84,14 @@ static t_form	write_arg(t_form anc, va_list ap)
 	anc.cnt += anc.i;
 	anc.fmt += anc.i + 1;
 	anc.i = 0;
-	while (anc.fmt[anc.i] && (ft_strchr(" #+-.jhlz", anc.fmt[anc.i])
+	while (anc.fmt[anc.i] && (ft_strchr(" #+-.jhlzL", anc.fmt[anc.i])
 			|| (anc.fmt[anc.i] >= '0' && anc.fmt[anc.i] <= '9')))
 		anc.i++;
 	specs = ft_strsub(anc.fmt, 0, anc.i + 1);
 	arg = converter(specs, ap);
 	write(1, arg, ft_strlen(arg));
 	if (anc.fmt[0] &&
-			ft_strchr(" .0123456789#+-jzhl", anc.fmt[ft_strlen(anc.fmt) - 1]))
+			ft_strchr(" .0123456789#+-jzhlL", anc.fmt[ft_strlen(anc.fmt) - 1]))
 		anc.fmt += anc.i;
 	else if (anc.fmt[0])
 		anc.fmt += anc.i + 1;

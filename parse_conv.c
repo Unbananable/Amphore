@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 18:47:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 12:03:28 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 16:47:31 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static t_conv	*initialize_conv_functions(void)
 	conv_list[6].f = &conv_u;
 	conv_list[7].f = &conv_x;
 	conv_list[8].f = &conv_big_x;
-	conv_list[10].f = &conv_percentage;
 	conv_list[9].f = &conv_binary;
+	conv_list[10].f = &conv_percentage;
 	return (conv_list);
 }
 
