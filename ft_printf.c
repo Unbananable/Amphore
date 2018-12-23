@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:47:15 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 13:42:47 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 13:57:21 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static char		*converter(char *specs, va_list ap)
 		return (ft_strdup(""));
 	res = parse_conv(ap, specs);
 	res = parse_accufield(res, specs);
+	printf("specs: %s\n", specs);
 	res = parse_flag(res, specs);
 	if (specs[ft_strlen(specs) - 1] == 'c' && ft_strstr(res, "^@"))
 	{
