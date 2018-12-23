@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:53:07 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/21 20:32:03 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 17:13:47 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,8 @@ int		main(void)
 	ft_printf("\nft_printf: %c\n", 'a');
 	printf("   printf: %c\n", 'a');
 
-	//	ft_printf("\nft_printf: %");
-	printf("\n  MARQUEur");
-	printf("   printf: %");
-	printf("  MARQUEur\n");
-
 	ft_printf("\nft_printf: %c\n");
-	printf("   printf: %c\n");
+	printf("   printf: %c\n (%%c with no arguments)");
 
 	ft_printf("\nft_printf: %c\n", 'a', 'b');
 	printf("   printf: %c\n", 'a', 'b');
@@ -216,14 +211,38 @@ int		main(void)
 	ft_printf("\n(ft_printf) test: %#o\n", 0);
 	printf("   printf   test: %#o\n", 0);
 
-	ft_printf("\n(ft_printf) test: %01.u\n", 0);
-	printf("   printf   test: %01.u\n", 0);
+	ft_printf("\n(ft_printf) test: %01.u__end\n", 0);
+	printf("   printf   test: %01.u__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %.01s__end\n", "");
+	printf("   printf   test: %.01s__end\n", "");
+
+	ft_printf("\n(ft_printf) test: %#X\n", 0);
+	printf("   printf   test: %#X\n", 0);
+
+	ft_printf("\n(ft_printf) test: %#x\n", 0);
+	printf("   printf   test: %#x\n", 0);
+
+	ft_printf("\n(ft_printf) test: %#o\n", 0);
+	printf("   printf   test: %#o\n", 0);
+
+	ft_printf("\n(ft_printf) test: % 0+-#10.5llX\n", 42);
+	printf("   printf   test: % 0+-#10.5llX\n", 42);
+
+	ft_printf("\n(ft_printf) test: % 0+-#10.5llx\n", 42);
+	printf("   printf   test: % 0+-#10.5llx\n", 42);
+
+	ft_printf("\n(ft_printf) test: % 0+-#10.5llo\n", 4020);
+	printf("   printf   test: % 0+-#10.5llo\n", 4020);
 
 	ft_printf("\n(ft_printf) test: %#04x\n", 424242);
 	printf("   printf   test: %#04x\n", 424242);
 
-	ft_printf("\n(ft_printf) test: %.01s__end\n", "");
-	printf("   printf   test: %.01s__end\n", "");
+	ft_printf("\n(ft_printf) test: %+-0#2x\n", 0);
+	printf("   printf   test: %+-0##2x\n", 0);
+
+	ft_printf("\n(ft_printf) test: % c__end\n", '\0');
+	printf("   printf   test: % c__end\n", '\0');
 
 
 	printf(" \n  printf: FIN\n");

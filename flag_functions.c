@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 17:11:40 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/23 16:14:24 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 17:09:20 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,27 @@
 char	*flag_hash(char *str, char conv)
 {
 	int		i;
-	int		trigger;
+	int		trigger_1;
+	int		trigger_2;
 
-	trigger = 0;
+	trigger_1 = 0;
+	trigger_2 = 1;
 	i = -1;
 	while (str[++i] == ' ')
 		;
-	if (str[i] == '0')
-		trigger = 1;
-	if (conv == 'o' && !trigger)
+	if (ft_strequ(str + i, "0") && (conv == 'x' || conv =='X'))
+		return (str);
+	if (str[i--] == '0')
+		trigger_1 = 1;
+	while (str[++i])
+		if (str[i] != '0')
+			trigger_2++;
+//	printf("\nhash.. str: %s, conv: %c, trigger_2:%d, trigger_1:%d\n", str, conv, trigger_2, trigger_1);
+	if (conv == 'o' && trigger_2 && !trigger_1)
 		return (suffix("0", str));
-	trigger = 0;
-	i = -1;
-	while (str[++i] && !trigger)
-		if (str[i])
-			trigger = 1;
-	if (conv == 'x' && trigger)
+	if (conv == 'x' && trigger_2)
 		return (suffix("0x", str));
-	if (conv == 'X' && trigger)
+	if (conv == 'X' && trigger_2)
 		return (suffix("0X", str));
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/23 15:56:14 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 16:16:22 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static char	*accuracy_s(char *str, size_t len)
 	if (!(ret = ft_strnew(len + 1)))
 		return (NULL);
 	ft_strncpy(ret, str, len);
-	i = 0;
-	while (i < (int)len)
+	i = -1;
+	while (++i < (int)len)
 	{
 		j = 0;
 		byte = 128;
@@ -54,7 +54,6 @@ static char	*accuracy_s(char *str, size_t len)
 		if (i + j > (int)len)
 			while (ret[i])
 				ret[i++] = 0;
-		i++;
 	}
 	return (ret);
 }
