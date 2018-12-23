@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 12:14:55 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/07 10:35:53 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 14:27:44 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,18 @@ static char	*parse_color_bold(const char *format)
 
 char		*parse_color(const char *format)
 {
-	if (!parse_color_bold(format))
-	{
-		if (ft_strnequ(format, "{red}", 5))
-			return ("\033[0;31m");
-		if (ft_strnequ(format, "{green}", 7))
-			return ("\033[0;32m");
-		if (ft_strnequ(format, "{yellow}", 8))
-			return ("\033[0;33m");
-		if (ft_strnequ(format, "{blue}", 6))
-			return ("\033[0;34m");
-		if (ft_strnequ(format, "{magenta}", 9))
-			return ("\033[0;35m");
-		if (ft_strnequ(format, "{cyan}", 6))
-			return ("\033[0;36m");
-		if (ft_strnequ(format, "{eoc}", 5))
-			return ("\033[0m");
-		return (NULL);
-	}
+	if (ft_strnequ(format, "{red}", 5))
+		return ("\033[0;31m");
+	if (ft_strnequ(format, "{green}", 7))
+		return ("\033[0;32m");
+	if (ft_strnequ(format, "{yellow}", 8))
+		return ("\033[0;33m");
+	if (ft_strnequ(format, "{blue}", 6))
+		return ("\033[0;34m");
+	if (ft_strnequ(format, "{magenta}", 9))
+		return ("\033[0;35m");
+	if (ft_strnequ(format, "{cyan}", 6))
+		return ("\033[0;36m");
 	return (parse_color_bold(format));
 }
 
@@ -61,7 +55,5 @@ int			param_len(const char *format)
 	i = 0;
 	while (format[i] && format[i] != '}')
 		i++;
-	if (!format[++i])
-		return (0);
-	return (i);
+	return (++i);
 }
