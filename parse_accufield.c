@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 13:42:24 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 14:02:19 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static char	*remove_accufield(char *specs)
 {
 	int		i;
 
-	i = -1;
-	while (specs[++i])
+	i = 0;
+	while (specs[i])
 	{
 		if (specs[i] == '.')
 		{
