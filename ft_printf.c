@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:47:15 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 12:00:11 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 12:39:26 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ static char		*converter(char *specs, va_list ap)
 
 	if (specs[ft_strlen(specs) - 1] == 'i')
 		specs[ft_strlen(specs) - 1] = 'd';
+	if (!specs[0]
+			|| ft_strchr(" .lhzj+-0123456789#", specs[ft_strlen(specs) - 1]))
+		return (ft_strdup(""));
 	res = parse_conv(ap, specs);
 	res = parse_accufield(res, specs);
 	res = parse_flag(res, specs);
@@ -87,7 +90,11 @@ static t_form	write_arg(t_form anc, va_list ap)
 	specs = ft_strsub(anc.fmt, 0, anc.i + 1);
 	arg = converter(specs, ap);
 	write(1, arg, ft_strlen(arg));
-	anc.fmt += anc.i + 1;
+	if (anc.fmt[0] &&
+			ft_strchr(" .0123456789#+-jzhl", anc.fmt[ft_strlen(anc.fmt) - 1]))
+		anc.fmt += anc.i;
+	else if (anc.fmt[0])
+		anc.fmt += anc.i + 1;
 	anc.cnt += ft_strlen(arg);
 	free(specs);
 	free(arg);
