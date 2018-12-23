@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 18:47:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/21 15:18:45 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 12:03:28 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ char			*parse_conv(va_list ap, char *specs)
 			if (conv == conv_list[i].conv)
 			{
 				str = conv_list[i].f(ap, mod);
-				i = 11;
+				i = 63;
 			}
+	if (i == 11)
+		str = ft_strdup(specs + ft_strlen(specs) - 1);
 	free(conv_list);
 	return (str);
 }
