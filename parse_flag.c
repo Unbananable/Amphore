@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:28:38 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/21 17:53:25 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 14:37:09 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,27 @@ static t_flag	*initialise_flag(void)
 
 	flag = malloc(sizeof(t_flag) * 5);
 	flag[0].c = ' ';
-	flag[3].c = '0';
-	flag[2].c = '+';
-	flag[4].c = '-';
 	flag[1].c = '#';
+	flag[2].c = '+';
+	flag[3].c = '0';
+	flag[4].c = '-';
 	flag[0].f = &flag_space;
-	flag[3].f = &flag_zero;
-	flag[2].f = &flag_plus;
-	flag[4].f = &flag_minus;
 	flag[1].f = &flag_hash;
+	flag[2].f = &flag_plus;
+	flag[3].f = &flag_zero;
+	flag[4].f = &flag_minus;
 	return (flag);
 }
 
-char			*parse_flag(char *str, char *specs)
+static char		*specs_ignore(char *specs)
 {
 	int		i;
-	t_flag	*flag;
 
-	flag = initialise_flag();
 	i = -1;
+	if (ft_strchr("diouxX", specs[ft_strlen(specs) - 1]))
+		while (specs[++i])
+			if (specs[i] == '0')
+				specs[i] = '%';
 	if (ft_strchr(specs, '-'))
 		while (specs[++i])
 			if (specs[i] == '0')
@@ -49,6 +51,16 @@ char			*parse_flag(char *str, char *specs)
 		while (specs[++i])
 			if (specs[i] == ' ')
 				specs[i] = '%';
+	return (specs);
+}
+
+char			*parse_flag(char *str, char *specs)
+{
+	int		i;
+	t_flag	*flag;
+
+	flag = initialise_flag();
+	specs = specs_ignore(specs);
 	i = 0;
 	while (i < 5)
 	{

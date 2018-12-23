@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:56:09 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/13 16:11:40 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 15:50:08 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,7 @@ char					*conv_c(va_list ap, char *mod)
 		res = (char *)conv_c_wchar(ap);
 	else
 	{
-		if ((arg = (unsigned char)va_arg(ap, int)) == 0)
-		{
-			if (!(res = ft_strdup("^@")))
-				exit_error("error: malloc failed\n", 0);
-			return (res);
-		}
+		arg = (unsigned char)va_arg(ap, int);
 		if (!(res = ft_strnew(1)))
 			exit_error("error: malloc_failed\n", 0);
 		res[0] = arg;

@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:47:15 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 15:38:14 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 15:40:35 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char		*converter(char *specs, va_list ap)
 		specs[ft_strlen(specs) - 1] = 'd';
 	if (!specs[0]
 			|| ft_strchr(" .lhzj+-0123456789#", specs[ft_strlen(specs) - 1]))
-		return (ft_strdup(" "));
+		return (ft_strdup(""));
 	res = parse_conv(ap, specs);
 	res = parse_accufield(res, specs);
 	res = parse_flag(res, specs);

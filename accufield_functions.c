@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:41:20 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/23 13:54:49 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 15:56:14 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,13 @@ char		*accuracy(char *str, size_t len, char *specs)
 			iszero = 0;
 	if (ft_strchr("xXdou", specs[ft_strlen(specs) - 1]) && !len && iszero)
 		ret = ft_strdup(" ");
+	else if (specs[ft_strlen(specs) - 1] == 'p' && ft_strequ(str, "0x0") 
+			&& !len)
+		ret = ft_strdup("0x"); 
 	else if (specs[ft_strlen(specs) - 1] == 'p' && len >= ft_strlen(str))
 		ret = accuracy_p(str, len);
 	else if (specs[ft_strlen(specs) - 1] == 's')
-{
 		ret = accuracy_s(str, len);
-}
 	else if (!ft_strchr("cpf", specs[ft_strlen(specs) - 1])
 			&& ft_strlen(str) <= len)
 		ret = accuracy_reg(str, len);
@@ -114,6 +115,8 @@ char		*field_width(char *str, size_t len)
 		ret[len] = 0;
 		ft_memset(ret, ' ', len);
 		i = ft_strlen(str);
+		if (!i)
+			ret[len - 1] = 0;
 		while (--i >= 0)
 			ret[len-- - 1] = str[i];
 		free(str);
