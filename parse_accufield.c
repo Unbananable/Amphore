@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 13:13:48 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 13:42:24 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ static int	get_fieldwidth(char *specs)
 	fieldwidth = 0;
 	while (specs[i] && !fieldwidth)
 	{
-		if (specs[i++] == '.')
+		if (specs[i] == '.')
+		{
+			i++;
 			while (specs[i] >= '0' && specs[i] <= '9')
 				i++;
+		}
 		else if (specs[i] > '0' && specs[i] <= '9')
 			fieldwidth = ft_atoi(specs + i);
 		else
@@ -40,9 +43,12 @@ static char	*remove_accufield(char *specs)
 	i = -1;
 	while (specs[++i])
 	{
-		if (specs[i++] == '.')
+		if (specs[i] == '.')
+		{
+			i++;
 			while (specs[i] >= '0' && specs[i] <= '9')
 				specs[i++] = '%';
+		}
 		else if (specs[i] > '0' && specs[i] <= '9')
 			while (specs[i] >= '0' && specs[i] <= '9')
 				specs[i++] = '%';
@@ -75,7 +81,7 @@ char		*parse_accufield(char *str, char *specs)
 	}
 	len = get_fieldwidth(specs);
 	if (len)
-		if (!(str = field_width(str, (size_t)ft_atoi(specs + i) + isnulc)))
+		if (!(str = field_width(str, len + isnulc)))
 			exit_error("error: malloc failed\n", 2, str, specs);
 	specs = remove_accufield(specs);
 	return (str);
