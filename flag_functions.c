@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 17:11:40 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/23 12:11:03 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 12:36:32 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 
 char	*flag_hash(char *str, char conv)
 {
+	int		i;
+	int		trigger;
+
+	trigger = 0;
+	i = -1;
+	while (str[++i] && !trigger)
+		if (str[++i])
+			trigger = 1;
 	if (conv == 'o')
 		return (suffix("0", str));
-	if (conv == 'x' && ft_atoi(str))
+	if (conv == 'x' && trigger)
 		return (suffix("0x", str));
-	if (conv == 'X' && ft_atoi(str))
+	if (conv == 'X' && trigger)
 		return (suffix("0X", str));
 	return (str);
 }
