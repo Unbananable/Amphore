@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 17:35:36 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 14:02:19 by anleclab         ###   ########.fr       */
+/*   Updated: 2018/12/23 17:46:36 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,10 @@ static char	*remove_accufield(char *specs)
 char		*parse_accufield(char *str, char *specs)
 {
 	int		i;
-	int		isnulc;
 	char	conv;
 	int		len;
 
 	conv = specs[ft_strlen(specs) - 1];
-	isnulc = ((conv == 'c' && ft_strstr(str, "^@")) ? 1 : 0);
 	i = 0;
 	len = 0;
 	while (specs[i] && specs[i] != '.')
@@ -81,7 +79,7 @@ char		*parse_accufield(char *str, char *specs)
 	}
 	len = get_fieldwidth(specs);
 	if (len)
-		if (!(str = field_width(str, len + isnulc)))
+		if (!(str = field_width(str, len, conv)))
 			exit_error("error: malloc failed\n", 2, str, specs);
 	specs = remove_accufield(specs);
 	return (str);

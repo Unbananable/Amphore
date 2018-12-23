@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:53:07 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 17:13:47 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 18:18:05 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,9 +211,6 @@ int		main(void)
 	ft_printf("\n(ft_printf) test: %#o\n", 0);
 	printf("   printf   test: %#o\n", 0);
 
-	ft_printf("\n(ft_printf) test: %01.u__end\n", 0);
-	printf("   printf   test: %01.u__end\n", 0);
-
 	ft_printf("\n(ft_printf) test: %.01s__end\n", "");
 	printf("   printf   test: %.01s__end\n", "");
 
@@ -243,6 +240,42 @@ int		main(void)
 
 	ft_printf("\n(ft_printf) test: % c__end\n", '\0');
 	printf("   printf   test: % c__end\n", '\0');
+
+	ft_printf("\n(ft_printf) test: %#.d__end\n", 0);
+	printf("   printf   test: %#.d__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %1s__end\n", "");
+	printf("   printf   test: %1s__end\n", "");
+
+	ft_printf("\n(ft_printf) test: %.d__end\n", 0);
+	printf("   printf   test: %.d__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %01.x__end\n", 0);
+	printf("   printf   test: %01.u__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %01.X__end\n", 0);
+	printf("   printf   test: %01.u__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %01.o__end\n", 0);
+	printf("   printf   test: %01.o__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %01s__end\n", "");
+	printf("   printf   test: %01s__end\n", "");
+
+	ft_printf("\n(ft_printf) test: %.o__end\n", 0);
+	printf("   printf   test: %.o__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %01.u__end\n", 0);
+	printf("   printf   test: %01.u__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %.u__end\n", 0);
+	printf("   printf   test: %.u__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %.d__end\n", 0);
+	printf("   printf   test: %.d__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %.2p__end\n", 0);
+	printf("   printf   test: %.2p__end\n", 0);
 
 
 	printf(" \n  printf: FIN\n");

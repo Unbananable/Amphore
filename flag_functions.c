@@ -6,7 +6,7 @@
 /*   By: anleclab <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 17:11:40 by anleclab          #+#    #+#             */
-/*   Updated: 2018/12/23 17:09:20 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 18:18:51 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ char	*flag_hash(char *str, char conv)
 	i = -1;
 	while (str[++i] == ' ')
 		;
-	if (ft_strequ(str + i, "0") && (conv == 'x' || conv =='X'))
+	if (ft_strequ(str + i, "0") && (conv == 'x' || conv == 'X'))
 		return (str);
 	if (str[i--] == '0')
 		trigger_1 = 1;
 	while (str[++i])
 		if (str[i] != '0')
 			trigger_2++;
-//	printf("\nhash.. str: %s, conv: %c, trigger_2:%d, trigger_1:%d\n", str, conv, trigger_2, trigger_1);
 	if (conv == 'o' && trigger_2 && !trigger_1)
 		return (suffix("0", str));
 	if (conv == 'x' && trigger_2)
@@ -87,9 +86,8 @@ char	*flag_zero(char *str, char conv)
 {
 	int		i;
 
-	if (conv == 'c' || conv == 's' || conv == 'p')
-		return (str);
 	i = -1;
+	conv += 0;
 	while (str[++i] == ' ')
 		str[i] = '0';
 	if (str[i] == '\t')
