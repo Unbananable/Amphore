@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:15:45 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 17:46:58 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 18:34:57 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@
 # include <stdarg.h>
 # include <string.h>
 
-typedef struct	s_conv
-{
-	char	conv;
-	char	*(*f)(va_list, char *);
-}				t_conv;
+typedef va_list t_anyah;
 
 typedef struct	s_flag
 {
 	char	c;
 	char	*(*f)(char *, char);
 }				t_flag;
+
+typedef struct	s_conv
+{
+	char	conv;
+	char	*(*f)(t_anyah, char *);
+}				t_conv;
 
 typedef struct	s_form
 {

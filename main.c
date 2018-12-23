@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 19:53:07 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 18:18:05 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 18:50:55 by dtrigalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,7 +277,14 @@ int		main(void)
 	ft_printf("\n(ft_printf) test: %.2p__end\n", 0);
 	printf("   printf   test: %.2p__end\n", 0);
 
+	ft_printf("\n(ft_printf) test: %s__end\n", "this is a string");
+	printf("   printf   test: %s__end\n", "this is a string");
 
+	ft_printf("\n(ft_printf) test: %.x__end\n", 0);
+	printf("   printf   test: %.x__end\n", 0);
+
+	ft_printf("\n(ft_printf) test: %#.0x__end\n", 0);
+	printf("   printf   test: %#.0x__end\n", 0);
 	printf(" \n  printf: FIN\n");
 
 	return (42);
