@@ -6,7 +6,7 @@
 /*   By: dtrigalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:28:38 by dtrigalo          #+#    #+#             */
-/*   Updated: 2018/12/23 14:37:09 by dtrigalo         ###   ########.fr       */
+/*   Updated: 2018/12/23 16:14:12 by anleclab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static char		*specs_ignore(char *specs)
 	int		i;
 
 	i = -1;
-	if (ft_strchr("diouxX", specs[ft_strlen(specs) - 1]))
+	if (ft_strchr("diouxX", specs[ft_strlen(specs) - 1])
+			&& ft_strchr(specs, '.'))
 		while (specs[++i])
 			if (specs[i] == '0')
 				specs[i] = '%';
